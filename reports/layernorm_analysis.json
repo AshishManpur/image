@@ -1,0 +1,180 @@
+{
+  "device": "cpu",
+  "threshold": {
+    "channels": 48.0,
+    "fp16_max": 65504.0,
+    "elementwise_square_overflow_at": 255.93749236874226
+  },
+  "sweep": [
+    {
+      "magnitude": 1,
+      "input_absmax": 4.34328031539917,
+      "var_fp16": 2.19921875,
+      "var_fp32": 2.1994495391845703,
+      "var_fp16_overflowed": false,
+      "input_fp16_overflowed": false,
+      "out_fp16_has_nan": false,
+      "out_fp16_absmax": 3.978515625,
+      "out_fp32_absmax": 3.979343891143799,
+      "out_fp16_all_zero": false
+    },
+    {
+      "magnitude": 4,
+      "input_absmax": 15.518094062805176,
+      "var_fp16": 29.578125,
+      "var_fp32": 29.578166961669922,
+      "var_fp16_overflowed": false,
+      "input_fp16_overflowed": false,
+      "out_fp16_has_nan": false,
+      "out_fp16_absmax": 3.890625,
+      "out_fp32_absmax": 3.892115592956543,
+      "out_fp16_all_zero": false
+    },
+    {
+      "magnitude": 16,
+      "input_absmax": 61.45589065551758,
+      "var_fp16": 397.0,
+      "var_fp32": 397.01934814453125,
+      "var_fp16_overflowed": false,
+      "input_fp16_overflowed": false,
+      "out_fp16_has_nan": false,
+      "out_fp16_absmax": 3.591796875,
+      "out_fp32_absmax": 3.5923776626586914,
+      "out_fp16_all_zero": false
+    },
+    {
+      "magnitude": 64,
+      "input_absmax": 292.01251220703125,
+      "var_fp16": 6696.0,
+      "var_fp32": 6695.21875,
+      "var_fp16_overflowed": false,
+      "input_fp16_overflowed": false,
+      "out_fp16_has_nan": false,
+      "out_fp16_absmax": 3.875,
+      "out_fp32_absmax": 3.8748457431793213,
+      "out_fp16_all_zero": false
+    },
+    {
+      "magnitude": 128,
+      "input_absmax": 555.4938354492188,
+      "var_fp16": 24208.0,
+      "var_fp32": 24215.978515625,
+      "var_fp16_overflowed": false,
+      "input_fp16_overflowed": false,
+      "out_fp16_has_nan": false,
+      "out_fp16_absmax": 3.734375,
+      "out_fp32_absmax": 3.734729528427124,
+      "out_fp16_all_zero": false
+    },
+    {
+      "magnitude": 181,
+      "input_absmax": 678.8511962890625,
+      "var_fp16": 52448.0,
+      "var_fp32": 52469.9921875,
+      "var_fp16_overflowed": false,
+      "input_fp16_overflowed": false,
+      "out_fp16_has_nan": false,
+      "out_fp16_absmax": 3.857421875,
+      "out_fp32_absmax": 3.856076240539551,
+      "out_fp16_all_zero": false
+    },
+    {
+      "magnitude": 200,
+      "input_absmax": 883.5806884765625,
+      "var_fp16": 62720.0,
+      "var_fp32": 62711.24609375,
+      "var_fp16_overflowed": false,
+      "input_fp16_overflowed": false,
+      "out_fp16_has_nan": false,
+      "out_fp16_absmax": 4.09375,
+      "out_fp32_absmax": 4.092168807983398,
+      "out_fp16_all_zero": false
+    },
+    {
+      "magnitude": 256,
+      "input_absmax": 1056.2615966796875,
+      "var_fp16": Infinity,
+      "var_fp32": 121114.6171875,
+      "var_fp16_overflowed": true,
+      "input_fp16_overflowed": false,
+      "out_fp16_has_nan": false,
+      "out_fp16_absmax": 3.5859375,
+      "out_fp32_absmax": 3.727856397628784,
+      "out_fp16_all_zero": false
+    },
+    {
+      "magnitude": 300,
+      "input_absmax": 1276.973388671875,
+      "var_fp16": Infinity,
+      "var_fp32": 149841.515625,
+      "var_fp16_overflowed": true,
+      "input_fp16_overflowed": false,
+      "out_fp16_has_nan": false,
+      "out_fp16_absmax": 2.919921875,
+      "out_fp32_absmax": 3.6961636543273926,
+      "out_fp16_all_zero": false
+    },
+    {
+      "magnitude": 362,
+      "input_absmax": 1385.90234375,
+      "var_fp16": Infinity,
+      "var_fp32": 232435.734375,
+      "var_fp16_overflowed": true,
+      "input_fp16_overflowed": false,
+      "out_fp16_has_nan": false,
+      "out_fp16_absmax": 2.130859375,
+      "out_fp32_absmax": 3.6848397254943848,
+      "out_fp16_all_zero": false
+    },
+    {
+      "magnitude": 512,
+      "input_absmax": 2010.20263671875,
+      "var_fp16": Infinity,
+      "var_fp32": 409246.90625,
+      "var_fp16_overflowed": true,
+      "input_fp16_overflowed": false,
+      "out_fp16_has_nan": false,
+      "out_fp16_absmax": 0.0,
+      "out_fp32_absmax": 3.5673446655273438,
+      "out_fp16_all_zero": true
+    },
+    {
+      "magnitude": 1024,
+      "input_absmax": 4136.619140625,
+      "var_fp16": Infinity,
+      "var_fp32": 1538215.75,
+      "var_fp16_overflowed": true,
+      "input_fp16_overflowed": false,
+      "out_fp16_has_nan": false,
+      "out_fp16_absmax": 0.0,
+      "out_fp32_absmax": 3.544154167175293,
+      "out_fp16_all_zero": true
+    },
+    {
+      "magnitude": 4096,
+      "input_absmax": 16948.388671875,
+      "var_fp16": Infinity,
+      "var_fp32": 25946582.0,
+      "var_fp16_overflowed": true,
+      "input_fp16_overflowed": false,
+      "out_fp16_has_nan": false,
+      "out_fp16_absmax": 0.0,
+      "out_fp32_absmax": 3.5546560287475586,
+      "out_fp16_all_zero": true
+    }
+  ],
+  "agreement": {
+    "magnitude_1": {
+      "fp32_moments_max_abs_err": 4.925878043238185e-07,
+      "fp16_moments_max_abs_err": 0.003543820939252207
+    },
+    "magnitude_10": {
+      "fp32_moments_max_abs_err": 4.999692229112895e-07,
+      "fp16_moments_max_abs_err": 0.0032007073267528163
+    },
+    "magnitude_100": {
+      "fp32_moments_max_abs_err": 4.3848908770627304e-07,
+      "fp16_moments_max_abs_err": 0.004028720331294977
+    }
+  }
+}

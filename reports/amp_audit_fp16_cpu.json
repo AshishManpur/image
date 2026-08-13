@@ -1,0 +1,6984 @@
+{
+  "device": "cpu",
+  "dtype": "torch.float16",
+  "torch": "2.10.0+cpu",
+  "operations": [
+    {
+      "op": "conv2d",
+      "baseline": "torch.float32",
+      "autocast_from_fp32": "torch.float16",
+      "autocast_from_reduced": "torch.float16",
+      "policy": "DEMOTES to reduced (.float() does not survive)"
+    },
+    {
+      "op": "conv2d(.float() inputs)",
+      "baseline": "torch.float32",
+      "autocast_from_fp32": "torch.float16",
+      "autocast_from_reduced": "torch.float16",
+      "policy": "DEMOTES to reduced (.float() does not survive)"
+    },
+    {
+      "op": "conv2d depthwise",
+      "baseline": "torch.float32",
+      "autocast_from_fp32": "torch.float16",
+      "autocast_from_reduced": "torch.float16",
+      "policy": "DEMOTES to reduced (.float() does not survive)"
+    },
+    {
+      "op": "conv_transpose2d",
+      "baseline": "torch.float32",
+      "autocast_from_fp32": "torch.float16",
+      "autocast_from_reduced": "torch.float16",
+      "policy": "DEMOTES to reduced (.float() does not survive)"
+    },
+    {
+      "op": "linear",
+      "baseline": "torch.float32",
+      "autocast_from_fp32": "torch.float16",
+      "autocast_from_reduced": "torch.float16",
+      "policy": "DEMOTES to reduced (.float() does not survive)"
+    },
+    {
+      "op": "matmul",
+      "baseline": "torch.float32",
+      "autocast_from_fp32": "torch.float16",
+      "autocast_from_reduced": "torch.float16",
+      "policy": "DEMOTES to reduced (.float() does not survive)"
+    },
+    {
+      "op": "einsum",
+      "baseline": "torch.float32",
+      "autocast_from_fp32": "torch.float16",
+      "autocast_from_reduced": "torch.float16",
+      "policy": "DEMOTES to reduced (.float() does not survive)"
+    },
+    {
+      "op": "scaled_dot_product_attention",
+      "baseline": "torch.float32",
+      "autocast_from_fp32": "torch.float16",
+      "autocast_from_reduced": "torch.float16",
+      "policy": "DEMOTES to reduced (.float() does not survive)"
+    },
+    {
+      "op": "layer_norm (F.layer_norm)",
+      "baseline": "torch.float32",
+      "autocast_from_fp32": "torch.float32",
+      "autocast_from_reduced": "torch.float16",
+      "policy": "dtype follows input"
+    },
+    {
+      "op": "softmax",
+      "baseline": "torch.float32",
+      "autocast_from_fp32": "torch.float32",
+      "autocast_from_reduced": "torch.float16",
+      "policy": "dtype follows input"
+    },
+    {
+      "op": "log_softmax",
+      "baseline": "torch.float32",
+      "autocast_from_fp32": "torch.float32",
+      "autocast_from_reduced": "torch.float16",
+      "policy": "dtype follows input"
+    },
+    {
+      "op": "softplus",
+      "baseline": "torch.float32",
+      "autocast_from_fp32": "torch.float32",
+      "autocast_from_reduced": "torch.float16",
+      "policy": "dtype follows input"
+    },
+    {
+      "op": "fft.rfft2",
+      "baseline": "torch.complex64",
+      "autocast_from_fp32": "torch.complex64",
+      "autocast_from_reduced": "torch.complex64",
+      "policy": "no policy (dtype follows input)"
+    },
+    {
+      "op": "l1_loss",
+      "baseline": "torch.float32",
+      "autocast_from_fp32": "torch.float32",
+      "autocast_from_reduced": "torch.float32",
+      "policy": "promotes to fp32 (safe)"
+    },
+    {
+      "op": "mse_loss",
+      "baseline": "torch.float32",
+      "autocast_from_fp32": "torch.float32",
+      "autocast_from_reduced": "torch.float32",
+      "policy": "promotes to fp32 (safe)"
+    },
+    {
+      "op": "mean(dim=1)",
+      "baseline": "torch.float32",
+      "autocast_from_fp32": "torch.float32",
+      "autocast_from_reduced": "torch.float16",
+      "policy": "dtype follows input"
+    },
+    {
+      "op": "var(dim=1)",
+      "baseline": "torch.float32",
+      "autocast_from_fp32": "torch.float32",
+      "autocast_from_reduced": "torch.float16",
+      "policy": "dtype follows input"
+    },
+    {
+      "op": "rsqrt",
+      "baseline": "torch.float32",
+      "autocast_from_fp32": "torch.float32",
+      "autocast_from_reduced": "torch.float16",
+      "policy": "dtype follows input"
+    },
+    {
+      "op": "sqrt",
+      "baseline": "torch.float32",
+      "autocast_from_fp32": "torch.float32",
+      "autocast_from_reduced": "torch.float16",
+      "policy": "dtype follows input"
+    },
+    {
+      "op": "log",
+      "baseline": "torch.float32",
+      "autocast_from_fp32": "torch.float32",
+      "autocast_from_reduced": "torch.float16",
+      "policy": "dtype follows input"
+    },
+    {
+      "op": "pow(2)",
+      "baseline": "torch.float32",
+      "autocast_from_fp32": "torch.float32",
+      "autocast_from_reduced": "torch.float16",
+      "policy": "dtype follows input"
+    },
+    {
+      "op": "elementwise mul",
+      "baseline": "torch.float32",
+      "autocast_from_fp32": "torch.float32",
+      "autocast_from_reduced": "torch.float16",
+      "policy": "dtype follows input"
+    },
+    {
+      "op": "avg_pool2d",
+      "baseline": "torch.float32",
+      "autocast_from_fp32": "torch.float32",
+      "autocast_from_reduced": "torch.float16",
+      "policy": "dtype follows input"
+    },
+    {
+      "op": "interpolate bicubic",
+      "baseline": "torch.float32",
+      "autocast_from_fp32": "torch.float32",
+      "autocast_from_reduced": "torch.float16",
+      "policy": "dtype follows input"
+    },
+    {
+      "op": "pad replicate",
+      "baseline": "torch.float32",
+      "autocast_from_fp32": "torch.float32",
+      "autocast_from_reduced": "torch.float32",
+      "policy": "promotes to fp32 (safe)"
+    }
+  ],
+  "modules": {
+    "records": [
+      {
+        "index": 0,
+        "name": "normalizer",
+        "class": "RobustNormalizer",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          1,
+          128,
+          128
+        ],
+        "min": -1.7449584007263184,
+        "max": 1.7327042818069458,
+        "absmax": 1.7449584007263184,
+        "mean": -2.2584572434425354e-08,
+        "std": 1.0,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 1,
+        "name": "noise_head.stages.0.conv",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          32,
+          64,
+          64
+        ],
+        "min": -0.9609375,
+        "max": 1.1474609375,
+        "absmax": 1.1474609375,
+        "mean": 0.03788946568965912,
+        "std": 0.3300357162952423,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 2,
+        "name": "noise_head.stages.0.gate",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          16,
+          64,
+          64
+        ],
+        "min": -0.495849609375,
+        "max": 1.189453125,
+        "absmax": 1.189453125,
+        "mean": 0.03503648564219475,
+        "std": 0.12900090217590332,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 3,
+        "name": "noise_head.stages.0.norm",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          16,
+          64,
+          64
+        ],
+        "min": -3.36328125,
+        "max": 3.60546875,
+        "absmax": 3.60546875,
+        "mean": 1.9082799553871155e-06,
+        "std": 0.9999709725379944,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 4,
+        "name": "noise_head.stages.1.conv",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          32,
+          32
+        ],
+        "min": -4.16796875,
+        "max": 3.423828125,
+        "absmax": 4.16796875,
+        "mean": -0.03475559875369072,
+        "std": 1.062147617340088,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 5,
+        "name": "noise_head.stages.1.gate",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          24,
+          32,
+          32
+        ],
+        "min": -8.9453125,
+        "max": 6.453125,
+        "absmax": 8.9453125,
+        "mean": -0.2750227451324463,
+        "std": 1.2428053617477417,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 6,
+        "name": "noise_head.stages.1.norm",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          24,
+          32,
+          32
+        ],
+        "min": -4.4296875,
+        "max": 3.947265625,
+        "absmax": 4.4296875,
+        "mean": 5.53554855287075e-07,
+        "std": 0.9999995827674866,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 7,
+        "name": "noise_head.stages.2.conv",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          64,
+          16,
+          16
+        ],
+        "min": -4.015625,
+        "max": 3.7265625,
+        "absmax": 4.015625,
+        "mean": -0.02705414779484272,
+        "std": 1.0279632806777954,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 8,
+        "name": "noise_head.stages.2.gate",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          32,
+          16,
+          16
+        ],
+        "min": -6.625,
+        "max": 6.60546875,
+        "absmax": 6.625,
+        "mean": -0.0781976580619812,
+        "std": 1.0033222436904907,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 9,
+        "name": "noise_head.stages.2.norm",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          32,
+          16,
+          16
+        ],
+        "min": -4.953125,
+        "max": 4.5625,
+        "absmax": 4.953125,
+        "mean": 2.2730673663318157e-06,
+        "std": 1.0000109672546387,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 10,
+        "name": "noise_head.stages.3.conv",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          64,
+          8,
+          8
+        ],
+        "min": -3.84375,
+        "max": 3.54296875,
+        "absmax": 3.84375,
+        "mean": -0.07297107577323914,
+        "std": 0.9572641849517822,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 11,
+        "name": "noise_head.stages.3.gate",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          32,
+          8,
+          8
+        ],
+        "min": -7.9140625,
+        "max": 6.17578125,
+        "absmax": 7.9140625,
+        "mean": -0.09117138385772705,
+        "std": 0.907159686088562,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 12,
+        "name": "noise_head.stages.3.norm",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          32,
+          8,
+          8
+        ],
+        "min": -4.84375,
+        "max": 5.015625,
+        "absmax": 5.015625,
+        "mean": -2.8915819711983204e-06,
+        "std": 1.0000231266021729,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 13,
+        "name": "noise_head.fc1",
+        "class": "Linear",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          64
+        ],
+        "min": -0.080078125,
+        "max": 0.09197998046875,
+        "absmax": 0.09197998046875,
+        "mean": 0.0004293881356716156,
+        "std": 0.033569443970918655,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 14,
+        "name": "noise_head.fc_gate",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          32
+        ],
+        "min": -0.0027408599853515625,
+        "max": 0.002521514892578125,
+        "absmax": 0.0027408599853515625,
+        "mean": -0.0001551872119307518,
+        "std": 0.001078612171113491,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 15,
+        "name": "noise_head.fc2",
+        "class": "Linear",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          2
+        ],
+        "min": -3.71875,
+        "max": -1.7177734375,
+        "absmax": 3.71875,
+        "mean": -2.71826171875,
+        "std": 1.00048828125,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 16,
+        "name": "encoder.stem.dwt",
+        "class": "HaarDWT",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          8,
+          64,
+          64
+        ],
+        "min": -3.318368673324585,
+        "max": 3.2712912559509277,
+        "absmax": 3.318368673324585,
+        "mean": 0.08349946141242981,
+        "std": 0.7377608418464661,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 17,
+        "name": "encoder.stem.proj",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -3.333984375,
+        "max": 3.29296875,
+        "absmax": 3.333984375,
+        "mean": 0.033625077456235886,
+        "std": 0.7490277290344238,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 18,
+        "name": "encoder.levels.0.naf.0.norm1",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -3.83984375,
+        "max": 4.38671875,
+        "absmax": 4.38671875,
+        "mean": 1.2438589465091354e-06,
+        "std": 0.9999948740005493,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 19,
+        "name": "encoder.levels.0.naf.0.conv1",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          64,
+          64
+        ],
+        "min": -4.390625,
+        "max": 4.52734375,
+        "absmax": 4.52734375,
+        "mean": -0.00859085563570261,
+        "std": 0.9980223774909973,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 20,
+        "name": "encoder.levels.0.naf.0.dwconv",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          64,
+          64
+        ],
+        "min": -5.078125,
+        "max": 5.5,
+        "absmax": 5.5,
+        "mean": 0.0032508361618965864,
+        "std": 0.9767782092094421,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 21,
+        "name": "encoder.levels.0.naf.0.gate1",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -12.59375,
+        "max": 14.7265625,
+        "absmax": 14.7265625,
+        "mean": 0.011281278915703297,
+        "std": 0.9631806015968323,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 22,
+        "name": "encoder.levels.0.naf.0.sca",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          1,
+          1
+        ],
+        "min": -0.1937255859375,
+        "max": 0.30810546875,
+        "absmax": 0.30810546875,
+        "mean": 0.014832536689937115,
+        "std": 0.12724974751472473,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 23,
+        "name": "encoder.levels.0.naf.0.conv3",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -0.98046875,
+        "max": 1.0419921875,
+        "absmax": 1.0419921875,
+        "mean": 0.00504240533336997,
+        "std": 0.134894460439682,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 24,
+        "name": "encoder.levels.0.naf.0.scale1",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -0.009804687462747097,
+        "max": 0.010419921949505806,
+        "absmax": 0.010419921949505806,
+        "mean": 5.042404882260598e-05,
+        "std": 0.0013489446137100458,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 25,
+        "name": "encoder.levels.0.naf.0.norm2",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -3.839094638824463,
+        "max": 4.389418601989746,
+        "absmax": 4.389418601989746,
+        "mean": -6.208817349140361e-10,
+        "std": 0.9999989867210388,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 26,
+        "name": "encoder.levels.0.naf.0.conv4",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          64,
+          64
+        ],
+        "min": -4.484375,
+        "max": 4.51953125,
+        "absmax": 4.51953125,
+        "mean": 0.015188556164503098,
+        "std": 1.0089863538742065,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 27,
+        "name": "encoder.levels.0.naf.0.gate2",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -10.9296875,
+        "max": 8.15625,
+        "absmax": 10.9296875,
+        "mean": -0.040298547595739365,
+        "std": 1.008651852607727,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 28,
+        "name": "encoder.levels.0.naf.0.conv5",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -5.1953125,
+        "max": 4.53515625,
+        "absmax": 5.1953125,
+        "mean": -0.05617325007915497,
+        "std": 0.9999099373817444,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 29,
+        "name": "encoder.levels.0.naf.0.scale2",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -0.05195312201976776,
+        "max": 0.04535156115889549,
+        "absmax": 0.05195312201976776,
+        "mean": -0.000561732507776469,
+        "std": 0.009999099187552929,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 30,
+        "name": "encoder.levels.0.naf.1.norm1",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -3.8425095081329346,
+        "max": 4.3970537185668945,
+        "absmax": 4.3970537185668945,
+        "mean": -1.5522043372850902e-10,
+        "std": 0.9999989867210388,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 31,
+        "name": "encoder.levels.0.naf.1.conv1",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          64,
+          64
+        ],
+        "min": -4.47265625,
+        "max": 4.43359375,
+        "absmax": 4.47265625,
+        "mean": 0.006320021580904722,
+        "std": 1.0199605226516724,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 32,
+        "name": "encoder.levels.0.naf.1.dwconv",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          64,
+          64
+        ],
+        "min": -5.22265625,
+        "max": 5.2578125,
+        "absmax": 5.2578125,
+        "mean": -0.07307236641645432,
+        "std": 0.9898792505264282,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 33,
+        "name": "encoder.levels.0.naf.1.gate1",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -13.0,
+        "max": 14.0078125,
+        "absmax": 14.0078125,
+        "mean": -0.02587127685546875,
+        "std": 0.9902065992355347,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 34,
+        "name": "encoder.levels.0.naf.1.sca",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          1,
+          1
+        ],
+        "min": -0.267822265625,
+        "max": 0.248779296875,
+        "absmax": 0.267822265625,
+        "mean": 0.012527682818472385,
+        "std": 0.11989795416593552,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 35,
+        "name": "encoder.levels.0.naf.1.conv3",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -0.9921875,
+        "max": 0.841796875,
+        "absmax": 0.9921875,
+        "mean": -0.00566669600084424,
+        "std": 0.1287386119365692,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 36,
+        "name": "encoder.levels.0.naf.1.scale1",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -0.009921874850988388,
+        "max": 0.008417968638241291,
+        "absmax": 0.009921874850988388,
+        "mean": -5.666696233674884e-05,
+        "std": 0.001287386054173112,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 37,
+        "name": "encoder.levels.0.naf.1.norm2",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -3.8421781063079834,
+        "max": 4.397631645202637,
+        "absmax": 4.397631645202637,
+        "mean": 9.313225746154785e-10,
+        "std": 0.9999989867210388,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 38,
+        "name": "encoder.levels.0.naf.1.conv4",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          64,
+          64
+        ],
+        "min": -4.859375,
+        "max": 4.53125,
+        "absmax": 4.859375,
+        "mean": 0.03539542853832245,
+        "std": 1.0234829187393188,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 39,
+        "name": "encoder.levels.0.naf.1.gate2",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -12.0390625,
+        "max": 9.859375,
+        "absmax": 12.0390625,
+        "mean": -0.08980480581521988,
+        "std": 1.060325026512146,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 40,
+        "name": "encoder.levels.0.naf.1.conv5",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -6.06640625,
+        "max": 5.6953125,
+        "absmax": 6.06640625,
+        "mean": 0.03685038536787033,
+        "std": 1.0700488090515137,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 41,
+        "name": "encoder.levels.0.naf.1.scale2",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -0.060664061456918716,
+        "max": 0.056953124701976776,
+        "absmax": 0.060664061456918716,
+        "mean": 0.0003685038536787033,
+        "std": 0.010700487531721592,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 42,
+        "name": "encoder.levels.0.naf.2.norm1",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -3.83803653717041,
+        "max": 4.39927339553833,
+        "absmax": 4.39927339553833,
+        "mean": -2.3283064365386963e-10,
+        "std": 0.9999989867210388,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 43,
+        "name": "encoder.levels.0.naf.2.conv1",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          64,
+          64
+        ],
+        "min": -4.3046875,
+        "max": 4.2421875,
+        "absmax": 4.3046875,
+        "mean": -0.017715616151690483,
+        "std": 0.9767704606056213,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 44,
+        "name": "encoder.levels.0.naf.2.dwconv",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          64,
+          64
+        ],
+        "min": -6.37890625,
+        "max": 5.3515625,
+        "absmax": 6.37890625,
+        "mean": -0.028059562668204308,
+        "std": 0.9860076308250427,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 45,
+        "name": "encoder.levels.0.naf.2.gate1",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -10.8828125,
+        "max": 15.015625,
+        "absmax": 15.015625,
+        "mean": 0.004945572931319475,
+        "std": 0.9974877238273621,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 46,
+        "name": "encoder.levels.0.naf.2.sca",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          1,
+          1
+        ],
+        "min": -0.4384765625,
+        "max": 0.40478515625,
+        "absmax": 0.4384765625,
+        "mean": 0.02470608614385128,
+        "std": 0.1544647514820099,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 47,
+        "name": "encoder.levels.0.naf.2.conv3",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -1.0615234375,
+        "max": 1.083984375,
+        "absmax": 1.083984375,
+        "mean": -0.002744200872257352,
+        "std": 0.1539364606142044,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 48,
+        "name": "encoder.levels.0.naf.2.scale1",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -0.010615234263241291,
+        "max": 0.010839843191206455,
+        "absmax": 0.010839843191206455,
+        "mean": -2.7442009013611823e-05,
+        "std": 0.0015393644571304321,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 49,
+        "name": "encoder.levels.0.naf.2.norm2",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -3.836557388305664,
+        "max": 4.4001970291137695,
+        "absmax": 4.4001970291137695,
+        "mean": -2.0954757928848267e-09,
+        "std": 0.9999989867210388,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 50,
+        "name": "encoder.levels.0.naf.2.conv4",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          64,
+          64
+        ],
+        "min": -4.41796875,
+        "max": 4.6640625,
+        "absmax": 4.6640625,
+        "mean": 0.008138613775372505,
+        "std": 1.0311437845230103,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 51,
+        "name": "encoder.levels.0.naf.2.gate2",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -13.4453125,
+        "max": 10.296875,
+        "absmax": 13.4453125,
+        "mean": 0.015481531620025635,
+        "std": 1.0622529983520508,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 52,
+        "name": "encoder.levels.0.naf.2.conv5",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -6.0078125,
+        "max": 5.3984375,
+        "absmax": 6.0078125,
+        "mean": -0.017213501036167145,
+        "std": 1.0672129392623901,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 53,
+        "name": "encoder.levels.0.naf.2.scale2",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -0.060078125447034836,
+        "max": 0.053984373807907104,
+        "absmax": 0.060078125447034836,
+        "mean": -0.0001721350272418931,
+        "std": 0.01067212875932455,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 54,
+        "name": "encoder.levels.0.naf.3.norm1",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -3.8476688861846924,
+        "max": 4.397763729095459,
+        "absmax": 4.397763729095459,
+        "mean": 6.208817349140361e-10,
+        "std": 0.9999989867210388,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 55,
+        "name": "encoder.levels.0.naf.3.conv1",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          64,
+          64
+        ],
+        "min": -4.78515625,
+        "max": 4.4375,
+        "absmax": 4.78515625,
+        "mean": -0.01958901435136795,
+        "std": 1.0042372941970825,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 56,
+        "name": "encoder.levels.0.naf.3.dwconv",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          64,
+          64
+        ],
+        "min": -6.37890625,
+        "max": 5.7890625,
+        "absmax": 6.37890625,
+        "mean": -0.05577781796455383,
+        "std": 0.9554929137229919,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 57,
+        "name": "encoder.levels.0.naf.3.gate1",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -10.6640625,
+        "max": 17.484375,
+        "absmax": 17.484375,
+        "mean": 0.004654886666685343,
+        "std": 0.9101622104644775,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 58,
+        "name": "encoder.levels.0.naf.3.sca",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          1,
+          1
+        ],
+        "min": -0.3447265625,
+        "max": 0.431396484375,
+        "absmax": 0.431396484375,
+        "mean": 0.010415027849376202,
+        "std": 0.14589114487171173,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 59,
+        "name": "encoder.levels.0.naf.3.conv3",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -1.4287109375,
+        "max": 1.419921875,
+        "absmax": 1.4287109375,
+        "mean": 0.0018234263407066464,
+        "std": 0.14773747324943542,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 60,
+        "name": "encoder.levels.0.naf.3.scale1",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -0.014287109486758709,
+        "max": 0.014199218712747097,
+        "absmax": 0.014287109486758709,
+        "mean": 1.8234262824989855e-05,
+        "std": 0.0014773746952414513,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 61,
+        "name": "encoder.levels.0.naf.3.norm2",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -3.8466296195983887,
+        "max": 4.398190975189209,
+        "absmax": 4.398190975189209,
+        "mean": 7.761021270091817e-10,
+        "std": 0.9999989867210388,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 62,
+        "name": "encoder.levels.0.naf.3.conv4",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          64,
+          64
+        ],
+        "min": -4.47265625,
+        "max": 4.51953125,
+        "absmax": 4.51953125,
+        "mean": -0.009346420876681805,
+        "std": 1.0050528049468994,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 63,
+        "name": "encoder.levels.0.naf.3.gate2",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -11.7734375,
+        "max": 11.3125,
+        "absmax": 11.7734375,
+        "mean": 0.013225801289081573,
+        "std": 1.0100170373916626,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 64,
+        "name": "encoder.levels.0.naf.3.conv5",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -4.80859375,
+        "max": 4.8515625,
+        "absmax": 4.8515625,
+        "mean": 0.01349876169115305,
+        "std": 0.9971637725830078,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 65,
+        "name": "encoder.levels.0.naf.3.scale2",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -0.04808593541383743,
+        "max": 0.048515625298023224,
+        "absmax": 0.048515625298023224,
+        "mean": 0.0001349876110907644,
+        "std": 0.009971637278795242,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 66,
+        "name": "encoder.levels.0.gsa",
+        "class": "Sequential",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -3.3498423099517822,
+        "max": 3.2621309757232666,
+        "absmax": 3.3498423099517822,
+        "mean": 0.033379245549440384,
+        "std": 0.7496780753135681,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 67,
+        "name": "encoder.downsamples.0.dwt",
+        "class": "HaarDWT",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          192,
+          32,
+          32
+        ],
+        "min": -3.3963775634765625,
+        "max": 3.979156017303467,
+        "absmax": 3.979156017303467,
+        "mean": 0.017256179824471474,
+        "std": 0.750222384929657,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 68,
+        "name": "encoder.downsamples.0.proj",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -3.2890625,
+        "max": 3.287109375,
+        "absmax": 3.2890625,
+        "mean": 0.0005819409270770848,
+        "std": 0.7329752445220947,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 69,
+        "name": "encoder.levels.1.naf.0.norm1",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -4.07421875,
+        "max": 4.23828125,
+        "absmax": 4.23828125,
+        "mean": -1.5667950492570526e-06,
+        "std": 1.0000025033950806,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 70,
+        "name": "encoder.levels.1.naf.0.conv1",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          192,
+          32,
+          32
+        ],
+        "min": -4.62109375,
+        "max": 4.58984375,
+        "absmax": 4.62109375,
+        "mean": -0.03903483971953392,
+        "std": 0.988682210445404,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 71,
+        "name": "encoder.levels.1.naf.0.dwconv",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          192,
+          32,
+          32
+        ],
+        "min": -5.09765625,
+        "max": 5.4375,
+        "absmax": 5.4375,
+        "mean": 0.006679452955722809,
+        "std": 0.9675679206848145,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 72,
+        "name": "encoder.levels.1.naf.0.gate1",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -9.9375,
+        "max": 11.5703125,
+        "absmax": 11.5703125,
+        "mean": 0.012773104012012482,
+        "std": 0.9328076839447021,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 73,
+        "name": "encoder.levels.1.naf.0.sca",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          1,
+          1
+        ],
+        "min": -0.190185546875,
+        "max": 0.238037109375,
+        "absmax": 0.238037109375,
+        "mean": -0.002079501748085022,
+        "std": 0.08315671235322952,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 74,
+        "name": "encoder.levels.1.naf.0.conv3",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -0.49609375,
+        "max": 0.467529296875,
+        "absmax": 0.49609375,
+        "mean": 0.0004105661064386368,
+        "std": 0.08120740205049515,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 75,
+        "name": "encoder.levels.1.naf.0.scale1",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -0.004960937425494194,
+        "max": 0.0046752928756177425,
+        "absmax": 0.004960937425494194,
+        "mean": 4.1056614463741425e-06,
+        "std": 0.0008120739948935807,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 76,
+        "name": "encoder.levels.1.naf.0.norm2",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -4.073771953582764,
+        "max": 4.239978790283203,
+        "absmax": 4.239978790283203,
+        "mean": 0.0,
+        "std": 0.9999989867210388,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 77,
+        "name": "encoder.levels.1.naf.0.conv4",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          192,
+          32,
+          32
+        ],
+        "min": -4.47265625,
+        "max": 4.51171875,
+        "absmax": 4.51171875,
+        "mean": -0.023638948798179626,
+        "std": 0.9990699887275696,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 78,
+        "name": "encoder.levels.1.naf.0.gate2",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -9.765625,
+        "max": 9.53125,
+        "absmax": 9.765625,
+        "mean": 0.001176450401544571,
+        "std": 1.0009076595306396,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 79,
+        "name": "encoder.levels.1.naf.0.conv5",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -4.515625,
+        "max": 4.73828125,
+        "absmax": 4.73828125,
+        "mean": -0.022795872762799263,
+        "std": 1.00449538230896,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 80,
+        "name": "encoder.levels.1.naf.0.scale2",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -0.04515624791383743,
+        "max": 0.047382812947034836,
+        "absmax": 0.047382812947034836,
+        "mean": -0.00022795872064307332,
+        "std": 0.010044953785836697,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 81,
+        "name": "encoder.levels.1.naf.1.norm1",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -4.09370756149292,
+        "max": 4.254788875579834,
+        "absmax": 4.254788875579834,
+        "mean": 0.0,
+        "std": 0.9999989867210388,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 82,
+        "name": "encoder.levels.1.naf.1.conv1",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          192,
+          32,
+          32
+        ],
+        "min": -4.609375,
+        "max": 4.55078125,
+        "absmax": 4.609375,
+        "mean": -0.021323444321751595,
+        "std": 0.9980565905570984,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 83,
+        "name": "encoder.levels.1.naf.1.dwconv",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          192,
+          32,
+          32
+        ],
+        "min": -5.58203125,
+        "max": 4.89453125,
+        "absmax": 5.58203125,
+        "mean": -0.005006415769457817,
+        "std": 0.960686981678009,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 84,
+        "name": "encoder.levels.1.naf.1.gate1",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -12.421875,
+        "max": 13.875,
+        "absmax": 13.875,
+        "mean": 0.007233192678540945,
+        "std": 0.9205649495124817,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 85,
+        "name": "encoder.levels.1.naf.1.sca",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          1,
+          1
+        ],
+        "min": -0.184326171875,
+        "max": 0.2076416015625,
+        "absmax": 0.2076416015625,
+        "mean": 0.0031305153388530016,
+        "std": 0.08388402312994003,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 86,
+        "name": "encoder.levels.1.naf.1.conv3",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -0.419677734375,
+        "max": 0.43994140625,
+        "absmax": 0.43994140625,
+        "mean": -0.0007470771670341492,
+        "std": 0.07881972938776016,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 87,
+        "name": "encoder.levels.1.naf.1.scale1",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -0.0041967774741351604,
+        "max": 0.004399414174258709,
+        "absmax": 0.004399414174258709,
+        "mean": -7.470771834050538e-06,
+        "std": 0.0007881972705945373,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 88,
+        "name": "encoder.levels.1.naf.1.norm2",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -4.093883037567139,
+        "max": 4.254968643188477,
+        "absmax": 4.254968643188477,
+        "mean": -1.2417634698280722e-09,
+        "std": 0.9999989867210388,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 89,
+        "name": "encoder.levels.1.naf.1.conv4",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          192,
+          32,
+          32
+        ],
+        "min": -4.41796875,
+        "max": 4.34765625,
+        "absmax": 4.41796875,
+        "mean": 0.011524278670549393,
+        "std": 0.9852620959281921,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 90,
+        "name": "encoder.levels.1.naf.1.gate2",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -9.2734375,
+        "max": 10.9296875,
+        "absmax": 10.9296875,
+        "mean": 0.018992623314261436,
+        "std": 0.9588212370872498,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 91,
+        "name": "encoder.levels.1.naf.1.conv5",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -4.80859375,
+        "max": 4.30078125,
+        "absmax": 4.80859375,
+        "mean": 0.01928660459816456,
+        "std": 0.9692246317863464,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 92,
+        "name": "encoder.levels.1.naf.1.scale2",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -0.04808593541383743,
+        "max": 0.04300781339406967,
+        "absmax": 0.04808593541383743,
+        "mean": 0.00019286603492219,
+        "std": 0.009692246094346046,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 93,
+        "name": "encoder.levels.1.naf.2.norm1",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -4.109177112579346,
+        "max": 4.247947692871094,
+        "absmax": 4.247947692871094,
+        "mean": 3.1044086745701804e-10,
+        "std": 0.9999989867210388,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 94,
+        "name": "encoder.levels.1.naf.2.conv1",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          192,
+          32,
+          32
+        ],
+        "min": -4.30078125,
+        "max": 4.4140625,
+        "absmax": 4.4140625,
+        "mean": 0.029452010989189148,
+        "std": 1.0088251829147339,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 95,
+        "name": "encoder.levels.1.naf.2.dwconv",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          192,
+          32,
+          32
+        ],
+        "min": -5.94921875,
+        "max": 6.0703125,
+        "absmax": 6.0703125,
+        "mean": 0.03343869373202324,
+        "std": 1.0082355737686157,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 96,
+        "name": "encoder.levels.1.naf.2.gate1",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -14.015625,
+        "max": 15.6328125,
+        "absmax": 15.6328125,
+        "mean": -0.004822407383471727,
+        "std": 1.0199921131134033,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 97,
+        "name": "encoder.levels.1.naf.2.sca",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          1,
+          1
+        ],
+        "min": -0.1806640625,
+        "max": 0.2459716796875,
+        "absmax": 0.2459716796875,
+        "mean": 0.011260909028351307,
+        "std": 0.09390430152416229,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 98,
+        "name": "encoder.levels.1.naf.2.conv3",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -0.56591796875,
+        "max": 0.619140625,
+        "absmax": 0.619140625,
+        "mean": 0.0011896748328581452,
+        "std": 0.09459616243839264,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 99,
+        "name": "encoder.levels.1.naf.2.scale1",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -0.005659179762005806,
+        "max": 0.006191405933350325,
+        "absmax": 0.006191405933350325,
+        "mean": 1.1896747309947386e-05,
+        "std": 0.0009459616267122328,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 100,
+        "name": "encoder.levels.1.naf.2.norm2",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -4.108532428741455,
+        "max": 4.247779846191406,
+        "absmax": 4.247779846191406,
+        "mean": -6.208817349140361e-10,
+        "std": 0.9999989867210388,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 101,
+        "name": "encoder.levels.1.naf.2.conv4",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          192,
+          32,
+          32
+        ],
+        "min": -4.21875,
+        "max": 4.27734375,
+        "absmax": 4.27734375,
+        "mean": -0.0034533904399722815,
+        "std": 0.9873031377792358,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 102,
+        "name": "encoder.levels.1.naf.2.gate2",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -12.0625,
+        "max": 9.171875,
+        "absmax": 12.0625,
+        "mean": 0.005910380277782679,
+        "std": 0.97086101770401,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 103,
+        "name": "encoder.levels.1.naf.2.conv5",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -4.4765625,
+        "max": 4.5,
+        "absmax": 4.5,
+        "mean": 0.03453637287020683,
+        "std": 0.9698564410209656,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 104,
+        "name": "encoder.levels.1.naf.2.scale2",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -0.04476562514901161,
+        "max": 0.044999998062849045,
+        "absmax": 0.044999998062849045,
+        "mean": 0.00034536371822468936,
+        "std": 0.009698564186692238,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 105,
+        "name": "encoder.levels.1.naf.3.norm1",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -4.105000019073486,
+        "max": 4.258089542388916,
+        "absmax": 4.258089542388916,
+        "mean": -9.313225746154785e-10,
+        "std": 0.9999989867210388,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 106,
+        "name": "encoder.levels.1.naf.3.conv1",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          192,
+          32,
+          32
+        ],
+        "min": -4.41015625,
+        "max": 4.53515625,
+        "absmax": 4.53515625,
+        "mean": 0.029873862862586975,
+        "std": 1.0035040378570557,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 107,
+        "name": "encoder.levels.1.naf.3.dwconv",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          192,
+          32,
+          32
+        ],
+        "min": -5.5078125,
+        "max": 6.3046875,
+        "absmax": 6.3046875,
+        "mean": -0.011727049946784973,
+        "std": 0.9839982986450195,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 108,
+        "name": "encoder.levels.1.naf.3.gate1",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -12.703125,
+        "max": 12.9140625,
+        "absmax": 12.9140625,
+        "mean": -0.006586205214262009,
+        "std": 0.9549786448478699,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 109,
+        "name": "encoder.levels.1.naf.3.sca",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          1,
+          1
+        ],
+        "min": -0.243896484375,
+        "max": 0.2109375,
+        "absmax": 0.243896484375,
+        "mean": 0.00013439667236525565,
+        "std": 0.08026017248630524,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 110,
+        "name": "encoder.levels.1.naf.3.conv3",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -0.470703125,
+        "max": 0.480224609375,
+        "absmax": 0.480224609375,
+        "mean": -0.0005688206292688847,
+        "std": 0.0723319724202156,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 111,
+        "name": "encoder.levels.1.naf.3.scale1",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -0.004707030951976776,
+        "max": 0.0048022461123764515,
+        "absmax": 0.0048022461123764515,
+        "mean": -5.688205419573933e-06,
+        "std": 0.0007233197102323174,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 112,
+        "name": "encoder.levels.1.naf.3.norm2",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -4.1046013832092285,
+        "max": 4.257358074188232,
+        "absmax": 4.257358074188232,
+        "mean": 6.208817349140361e-10,
+        "std": 0.9999989867210388,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 113,
+        "name": "encoder.levels.1.naf.3.conv4",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          192,
+          32,
+          32
+        ],
+        "min": -4.48046875,
+        "max": 4.53125,
+        "absmax": 4.53125,
+        "mean": -0.004610590171068907,
+        "std": 0.9924743175506592,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 114,
+        "name": "encoder.levels.1.naf.3.gate2",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -9.6328125,
+        "max": 11.3984375,
+        "absmax": 11.3984375,
+        "mean": -0.0028497076127678156,
+        "std": 0.9876714944839478,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 115,
+        "name": "encoder.levels.1.naf.3.conv5",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -4.97265625,
+        "max": 4.91015625,
+        "absmax": 4.97265625,
+        "mean": -0.024219274520874023,
+        "std": 0.988254964351654,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 116,
+        "name": "encoder.levels.1.naf.3.scale2",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -0.04972656071186066,
+        "max": 0.049101561307907104,
+        "absmax": 0.04972656071186066,
+        "mean": -0.00024219272017944604,
+        "std": 0.009882548823952675,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 117,
+        "name": "encoder.levels.1.gsa",
+        "class": "Sequential",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -3.2674081325531006,
+        "max": 3.301751136779785,
+        "absmax": 3.301751136779785,
+        "mean": 0.0006528624217025936,
+        "std": 0.7332212924957275,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 118,
+        "name": "encoder.downsamples.1.dwt",
+        "class": "HaarDWT",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          384,
+          16,
+          16
+        ],
+        "min": -3.5323448181152344,
+        "max": 4.056143283843994,
+        "absmax": 4.056143283843994,
+        "mean": 0.0007409414392895997,
+        "std": 0.733221173286438,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 119,
+        "name": "encoder.downsamples.1.proj",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          160,
+          16,
+          16
+        ],
+        "min": -3.1640625,
+        "max": 3.173828125,
+        "absmax": 3.173828125,
+        "mean": -0.002139788120985031,
+        "std": 0.7362725138664246,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 120,
+        "name": "encoder.levels.2.naf.0.norm1",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          160,
+          16,
+          16
+        ],
+        "min": -4.02734375,
+        "max": 4.01171875,
+        "absmax": 4.02734375,
+        "mean": -1.548230670778139e-06,
+        "std": 0.9999955892562866,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 121,
+        "name": "encoder.levels.2.naf.0.conv1",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          320,
+          16,
+          16
+        ],
+        "min": -4.19140625,
+        "max": 4.2421875,
+        "absmax": 4.2421875,
+        "mean": -0.003224606392905116,
+        "std": 0.9906594753265381,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 122,
+        "name": "encoder.levels.2.naf.0.dwconv",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          320,
+          16,
+          16
+        ],
+        "min": -5.18359375,
+        "max": 5.69921875,
+        "absmax": 5.69921875,
+        "mean": 0.008367961272597313,
+        "std": 0.9437742233276367,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 123,
+        "name": "encoder.levels.2.naf.0.gate1",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          160,
+          16,
+          16
+        ],
+        "min": -14.0390625,
+        "max": 14.3046875,
+        "absmax": 14.3046875,
+        "mean": -0.0015393947251141071,
+        "std": 0.901532769203186,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 124,
+        "name": "encoder.levels.2.naf.0.sca",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          160,
+          1,
+          1
+        ],
+        "min": -0.2303466796875,
+        "max": 0.19140625,
+        "absmax": 0.2303466796875,
+        "mean": -0.004283499903976917,
+        "std": 0.07542269676923752,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 125,
+        "name": "encoder.levels.2.naf.0.conv3",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          160,
+          16,
+          16
+        ],
+        "min": -0.403564453125,
+        "max": 0.450927734375,
+        "absmax": 0.450927734375,
+        "mean": 0.0006163469515740871,
+        "std": 0.07242998480796814,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 126,
+        "name": "encoder.levels.2.naf.0.scale1",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          160,
+          16,
+          16
+        ],
+        "min": -0.004035644233226776,
+        "max": 0.004509277176111937,
+        "absmax": 0.004509277176111937,
+        "mean": 6.1634700614376925e-06,
+        "std": 0.0007242998690344393,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 127,
+        "name": "encoder.levels.2.naf.0.norm2",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          160,
+          16,
+          16
+        ],
+        "min": -4.027994155883789,
+        "max": 4.009366989135742,
+        "absmax": 4.027994155883789,
+        "mean": -7.450580707946131e-10,
+        "std": 0.9999990463256836,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 128,
+        "name": "encoder.levels.2.naf.0.conv4",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          320,
+          16,
+          16
+        ],
+        "min": -4.9296875,
+        "max": 4.13671875,
+        "absmax": 4.9296875,
+        "mean": 0.008128179237246513,
+        "std": 0.9962925910949707,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 129,
+        "name": "encoder.levels.2.naf.0.gate2",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          160,
+          16,
+          16
+        ],
+        "min": -8.015625,
+        "max": 9.1171875,
+        "absmax": 9.1171875,
+        "mean": -0.017335042357444763,
+        "std": 0.9948832392692566,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 130,
+        "name": "encoder.levels.2.naf.0.conv5",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          160,
+          16,
+          16
+        ],
+        "min": -4.33203125,
+        "max": 4.33984375,
+        "absmax": 4.33984375,
+        "mean": -0.014431586489081383,
+        "std": 0.9956005811691284,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 131,
+        "name": "encoder.levels.2.naf.0.scale2",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          160,
+          16,
+          16
+        ],
+        "min": -0.04332031309604645,
+        "max": 0.04339843615889549,
+        "absmax": 0.04339843615889549,
+        "mean": -0.0001443158689653501,
+        "std": 0.009956005960702896,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 132,
+        "name": "encoder.levels.2.naf.1.norm1",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          160,
+          16,
+          16
+        ],
+        "min": -4.031723976135254,
+        "max": 4.010450839996338,
+        "absmax": 4.031723976135254,
+        "mean": 1.4901161415892261e-09,
+        "std": 0.9999990463256836,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 133,
+        "name": "encoder.levels.2.naf.1.conv1",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          320,
+          16,
+          16
+        ],
+        "min": -4.31640625,
+        "max": 4.46875,
+        "absmax": 4.46875,
+        "mean": -0.013233030214905739,
+        "std": 1.0033150911331177,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 134,
+        "name": "encoder.levels.2.naf.1.dwconv",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          320,
+          16,
+          16
+        ],
+        "min": -5.8046875,
+        "max": 4.8515625,
+        "absmax": 5.8046875,
+        "mean": 0.012815788388252258,
+        "std": 0.9691110849380493,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 135,
+        "name": "encoder.levels.2.naf.1.gate1",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          160,
+          16,
+          16
+        ],
+        "min": -9.5703125,
+        "max": 11.375,
+        "absmax": 11.375,
+        "mean": 0.003971966914832592,
+        "std": 0.9541216492652893,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 136,
+        "name": "encoder.levels.2.naf.1.sca",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          160,
+          1,
+          1
+        ],
+        "min": -0.3037109375,
+        "max": 0.2509765625,
+        "absmax": 0.3037109375,
+        "mean": 0.0005931213381700218,
+        "std": 0.09851207584142685,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 137,
+        "name": "encoder.levels.2.naf.1.conv3",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          160,
+          16,
+          16
+        ],
+        "min": -0.5517578125,
+        "max": 0.464111328125,
+        "absmax": 0.5517578125,
+        "mean": -0.000363585859304294,
+        "std": 0.09443753212690353,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 138,
+        "name": "encoder.levels.2.naf.1.scale1",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          160,
+          16,
+          16
+        ],
+        "min": -0.0055175782181322575,
+        "max": 0.0046411133371293545,
+        "absmax": 0.0055175782181322575,
+        "mean": -3.635858547568205e-06,
+        "std": 0.0009443752351216972,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 139,
+        "name": "encoder.levels.2.naf.1.norm2",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          160,
+          16,
+          16
+        ],
+        "min": -4.03263521194458,
+        "max": 4.009292125701904,
+        "absmax": 4.03263521194458,
+        "mean": -7.450580707946131e-10,
+        "std": 0.9999990463256836,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 140,
+        "name": "encoder.levels.2.naf.1.conv4",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          320,
+          16,
+          16
+        ],
+        "min": -4.234375,
+        "max": 4.21484375,
+        "absmax": 4.234375,
+        "mean": 0.018286816775798798,
+        "std": 0.997647225856781,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 141,
+        "name": "encoder.levels.2.naf.1.gate2",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          160,
+          16,
+          16
+        ],
+        "min": -9.9453125,
+        "max": 10.9375,
+        "absmax": 10.9375,
+        "mean": 0.004815380554646254,
+        "std": 0.9985985159873962,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 142,
+        "name": "encoder.levels.2.naf.1.conv5",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          160,
+          16,
+          16
+        ],
+        "min": -4.34765625,
+        "max": 4.6484375,
+        "absmax": 4.6484375,
+        "mean": 0.009897989220917225,
+        "std": 0.9971610307693481,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 143,
+        "name": "encoder.levels.2.naf.1.scale2",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          160,
+          16,
+          16
+        ],
+        "min": -0.043476562947034836,
+        "max": 0.04648437350988388,
+        "absmax": 0.04648437350988388,
+        "mean": 9.897990094032139e-05,
+        "std": 0.009971610270440578,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 144,
+        "name": "encoder.levels.2.naf.2.norm1",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          160,
+          16,
+          16
+        ],
+        "min": -4.025595188140869,
+        "max": 4.010311126708984,
+        "absmax": 4.025595188140869,
+        "mean": 0.0,
+        "std": 0.9999990463256836,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 145,
+        "name": "encoder.levels.2.naf.2.conv1",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          320,
+          16,
+          16
+        ],
+        "min": -4.5,
+        "max": 4.52734375,
+        "absmax": 4.52734375,
+        "mean": 0.014653706923127174,
+        "std": 1.006919026374817,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 146,
+        "name": "encoder.levels.2.naf.2.dwconv",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          320,
+          16,
+          16
+        ],
+        "min": -4.4453125,
+        "max": 4.9453125,
+        "absmax": 4.9453125,
+        "mean": -0.01551066618412733,
+        "std": 0.940284013748169,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 147,
+        "name": "encoder.levels.2.naf.2.gate1",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          160,
+          16,
+          16
+        ],
+        "min": -10.0390625,
+        "max": 10.3203125,
+        "absmax": 10.3203125,
+        "mean": 0.006424307823181152,
+        "std": 0.8973057270050049,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 148,
+        "name": "encoder.levels.2.naf.2.sca",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          160,
+          1,
+          1
+        ],
+        "min": -0.2430419921875,
+        "max": 0.24755859375,
+        "absmax": 0.24755859375,
+        "mean": -0.013347906060516834,
+        "std": 0.09603223949670792,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 149,
+        "name": "encoder.levels.2.naf.2.conv3",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          160,
+          16,
+          16
+        ],
+        "min": -0.423828125,
+        "max": 0.44580078125,
+        "absmax": 0.44580078125,
+        "mean": -0.0012324125273153186,
+        "std": 0.08730022609233856,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 150,
+        "name": "encoder.levels.2.naf.2.scale1",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          160,
+          16,
+          16
+        ],
+        "min": -0.004238280933350325,
+        "max": 0.0044580078683793545,
+        "absmax": 0.0044580078683793545,
+        "mean": -1.23241261462681e-05,
+        "std": 0.0008730022236704826,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 151,
+        "name": "encoder.levels.2.naf.2.norm2",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          160,
+          16,
+          16
+        ],
+        "min": -4.026918411254883,
+        "max": 4.009866714477539,
+        "absmax": 4.026918411254883,
+        "mean": 7.450580707946131e-10,
+        "std": 0.9999990463256836,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 152,
+        "name": "encoder.levels.2.naf.2.conv4",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          320,
+          16,
+          16
+        ],
+        "min": -4.3125,
+        "max": 4.5546875,
+        "absmax": 4.5546875,
+        "mean": 0.021258926019072533,
+        "std": 0.9977770447731018,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 153,
+        "name": "encoder.levels.2.naf.2.gate2",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          160,
+          16,
+          16
+        ],
+        "min": -8.703125,
+        "max": 10.3046875,
+        "absmax": 10.3046875,
+        "mean": -0.0032891277223825455,
+        "std": 0.996648371219635,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 154,
+        "name": "encoder.levels.2.naf.2.conv5",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          160,
+          16,
+          16
+        ],
+        "min": -4.35546875,
+        "max": 4.5390625,
+        "absmax": 4.5390625,
+        "mean": 0.033374182879924774,
+        "std": 0.9961903691291809,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 155,
+        "name": "encoder.levels.2.naf.2.scale2",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          160,
+          16,
+          16
+        ],
+        "min": -0.04355468600988388,
+        "max": 0.045390624552965164,
+        "absmax": 0.045390624552965164,
+        "mean": 0.0003337418311275542,
+        "std": 0.009961904026567936,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 156,
+        "name": "encoder.levels.2.naf.3.norm1",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          160,
+          16,
+          16
+        ],
+        "min": -4.045083045959473,
+        "max": 4.0111188888549805,
+        "absmax": 4.045083045959473,
+        "mean": 0.0,
+        "std": 0.9999990463256836,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 157,
+        "name": "encoder.levels.2.naf.3.conv1",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          320,
+          16,
+          16
+        ],
+        "min": -5.2421875,
+        "max": 4.51171875,
+        "absmax": 5.2421875,
+        "mean": -0.006896191742271185,
+        "std": 1.0061269998550415,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 158,
+        "name": "encoder.levels.2.naf.3.dwconv",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          320,
+          16,
+          16
+        ],
+        "min": -5.0,
+        "max": 6.55078125,
+        "absmax": 6.55078125,
+        "mean": 0.014218077063560486,
+        "std": 0.9782857298851013,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 159,
+        "name": "encoder.levels.2.naf.3.gate1",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          160,
+          16,
+          16
+        ],
+        "min": -9.8671875,
+        "max": 10.671875,
+        "absmax": 10.671875,
+        "mean": -0.006060215178877115,
+        "std": 0.9578267931938171,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 160,
+        "name": "encoder.levels.2.naf.3.sca",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          160,
+          1,
+          1
+        ],
+        "min": -0.272216796875,
+        "max": 0.260498046875,
+        "absmax": 0.272216796875,
+        "mean": -0.002689638640731573,
+        "std": 0.08431940525770187,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 161,
+        "name": "encoder.levels.2.naf.3.conv3",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          160,
+          16,
+          16
+        ],
+        "min": -0.43115234375,
+        "max": 0.45654296875,
+        "absmax": 0.45654296875,
+        "mean": -0.0012001972645521164,
+        "std": 0.07824151962995529,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 162,
+        "name": "encoder.levels.2.naf.3.scale1",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          160,
+          16,
+          16
+        ],
+        "min": -0.004311523400247097,
+        "max": 0.004565429408103228,
+        "absmax": 0.004565429408103228,
+        "mean": -1.2001971299469005e-05,
+        "std": 0.0007824151543900371,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 163,
+        "name": "encoder.levels.2.naf.3.norm2",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          160,
+          16,
+          16
+        ],
+        "min": -4.0450758934021,
+        "max": 4.012399196624756,
+        "absmax": 4.0450758934021,
+        "mean": 7.450580707946131e-10,
+        "std": 0.9999990463256836,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 164,
+        "name": "encoder.levels.2.naf.3.conv4",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          320,
+          16,
+          16
+        ],
+        "min": -4.34375,
+        "max": 4.27734375,
+        "absmax": 4.34375,
+        "mean": 0.0073911347426474094,
+        "std": 0.9974021315574646,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 165,
+        "name": "encoder.levels.2.naf.3.gate2",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          160,
+          16,
+          16
+        ],
+        "min": -9.515625,
+        "max": 8.765625,
+        "absmax": 9.515625,
+        "mean": -0.010083548724651337,
+        "std": 0.9918837547302246,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 166,
+        "name": "encoder.levels.2.naf.3.conv5",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          160,
+          16,
+          16
+        ],
+        "min": -4.75390625,
+        "max": 5.01953125,
+        "absmax": 5.01953125,
+        "mean": -0.006695473100990057,
+        "std": 0.992387592792511,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 167,
+        "name": "encoder.levels.2.naf.3.scale2",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          160,
+          16,
+          16
+        ],
+        "min": -0.047539062798023224,
+        "max": 0.05019531026482582,
+        "absmax": 0.05019531026482582,
+        "mean": -6.695472256978974e-05,
+        "std": 0.009923875331878662,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 168,
+        "name": "encoder.levels.2.gsa",
+        "class": "Sequential",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          160,
+          16,
+          16
+        ],
+        "min": -3.168973922729492,
+        "max": 3.1758792400360107,
+        "absmax": 3.1758792400360107,
+        "mean": -0.0019401360768824816,
+        "std": 0.7365002632141113,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 169,
+        "name": "decoder.stages.0.upsample.proj",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          384,
+          16,
+          16
+        ],
+        "min": -3.68359375,
+        "max": 3.646484375,
+        "absmax": 3.68359375,
+        "mean": 0.016299694776535034,
+        "std": 0.7377246022224426,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 170,
+        "name": "decoder.stages.0.upsample.idwt",
+        "class": "HaarIDWT",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -3.712890625,
+        "max": 3.96484375,
+        "absmax": 3.96484375,
+        "mean": 0.0017916591605171561,
+        "std": 0.7379014492034912,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 171,
+        "name": "decoder.stages.0.fusion.project",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -3.96484375,
+        "max": 3.515625,
+        "absmax": 3.96484375,
+        "mean": 0.012582373805344105,
+        "std": 0.737608790397644,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 172,
+        "name": "decoder.stages.0.fusion.squeeze",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          24,
+          1,
+          1
+        ],
+        "min": -0.2578125,
+        "max": 0.225830078125,
+        "absmax": 0.2578125,
+        "mean": -0.021757284179329872,
+        "std": 0.14332041144371033,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 173,
+        "name": "decoder.stages.0.fusion.excite",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          1,
+          1
+        ],
+        "min": -0.279296875,
+        "max": 0.42626953125,
+        "absmax": 0.42626953125,
+        "mean": 0.014509384520351887,
+        "std": 0.14825519919395447,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 174,
+        "name": "decoder.stages.0.gsa",
+        "class": "Sequential",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -2.339163303375244,
+        "max": 2.4105663299560547,
+        "absmax": 2.4105663299560547,
+        "mean": 0.001531850197352469,
+        "std": 0.522253155708313,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 175,
+        "name": "decoder.stages.0.naf.0.norm1",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -4.356385231018066,
+        "max": 4.20508337020874,
+        "absmax": 4.356385231018066,
+        "mean": -1.2417634698280722e-09,
+        "std": 0.9999980330467224,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 176,
+        "name": "decoder.stages.0.naf.0.conv1",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          192,
+          32,
+          32
+        ],
+        "min": -4.9765625,
+        "max": 4.37109375,
+        "absmax": 4.9765625,
+        "mean": 0.0071288906037807465,
+        "std": 0.99320387840271,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 177,
+        "name": "decoder.stages.0.naf.0.dwconv",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          192,
+          32,
+          32
+        ],
+        "min": -5.40234375,
+        "max": 4.96484375,
+        "absmax": 5.40234375,
+        "mean": 0.013134803622961044,
+        "std": 0.9589033126831055,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 178,
+        "name": "decoder.stages.0.naf.0.gate1",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -10.1875,
+        "max": 10.203125,
+        "absmax": 10.203125,
+        "mean": 0.005817148368805647,
+        "std": 0.9119078516960144,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 179,
+        "name": "decoder.stages.0.naf.0.sca",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          1,
+          1
+        ],
+        "min": -0.17138671875,
+        "max": 0.1470947265625,
+        "absmax": 0.17138671875,
+        "mean": -0.0041639837436378,
+        "std": 0.06734022498130798,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 180,
+        "name": "decoder.stages.0.naf.0.conv3",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -0.35888671875,
+        "max": 0.3876953125,
+        "absmax": 0.3876953125,
+        "mean": -0.00014212548558134586,
+        "std": 0.06364297866821289,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 181,
+        "name": "decoder.stages.0.naf.0.scale1",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -0.0035888671409338713,
+        "max": 0.0038769531529396772,
+        "absmax": 0.0038769531529396772,
+        "mean": -1.4212545238478924e-06,
+        "std": 0.0006364297587424517,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 182,
+        "name": "decoder.stages.0.naf.0.norm2",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -4.35870885848999,
+        "max": 4.20382833480835,
+        "absmax": 4.35870885848999,
+        "mean": -6.208817349140361e-10,
+        "std": 0.9999980330467224,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 183,
+        "name": "decoder.stages.0.naf.0.conv4",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          192,
+          32,
+          32
+        ],
+        "min": -4.46484375,
+        "max": 4.73828125,
+        "absmax": 4.73828125,
+        "mean": -0.00032511065364815295,
+        "std": 1.0050902366638184,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 184,
+        "name": "decoder.stages.0.naf.0.gate2",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -9.609375,
+        "max": 9.71875,
+        "absmax": 9.71875,
+        "mean": -0.01734713651239872,
+        "std": 1.0071570873260498,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 185,
+        "name": "decoder.stages.0.naf.0.conv5",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -5.23828125,
+        "max": 5.26171875,
+        "absmax": 5.26171875,
+        "mean": -0.026879040524363518,
+        "std": 1.0075279474258423,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 186,
+        "name": "decoder.stages.0.naf.0.scale2",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -0.05238281190395355,
+        "max": 0.052617184817790985,
+        "absmax": 0.052617184817790985,
+        "mean": -0.0002687903761398047,
+        "std": 0.010075278580188751,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 187,
+        "name": "decoder.stages.0.naf.1.norm1",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -4.364363670349121,
+        "max": 4.194258213043213,
+        "absmax": 4.364363670349121,
+        "mean": 6.208817349140361e-10,
+        "std": 0.9999980330467224,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 188,
+        "name": "decoder.stages.0.naf.1.conv1",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          192,
+          32,
+          32
+        ],
+        "min": -4.30078125,
+        "max": 5.09765625,
+        "absmax": 5.09765625,
+        "mean": 0.02846691571176052,
+        "std": 0.9930114150047302,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 189,
+        "name": "decoder.stages.0.naf.1.dwconv",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          192,
+          32,
+          32
+        ],
+        "min": -5.82421875,
+        "max": 4.75390625,
+        "absmax": 5.82421875,
+        "mean": -0.012598416768014431,
+        "std": 0.9839633107185364,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 190,
+        "name": "decoder.stages.0.naf.1.gate1",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -12.5390625,
+        "max": 15.2421875,
+        "absmax": 15.2421875,
+        "mean": -0.004765515681356192,
+        "std": 0.9693877100944519,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 191,
+        "name": "decoder.stages.0.naf.1.sca",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          1,
+          1
+        ],
+        "min": -0.1636962890625,
+        "max": 0.1873779296875,
+        "absmax": 0.1873779296875,
+        "mean": -2.9067197829135694e-05,
+        "std": 0.06443450599908829,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 192,
+        "name": "decoder.stages.0.naf.1.conv3",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -0.41015625,
+        "max": 0.3720703125,
+        "absmax": 0.41015625,
+        "mean": 2.882800436054822e-05,
+        "std": 0.06297945976257324,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 193,
+        "name": "decoder.stages.0.naf.1.scale1",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -0.004101562313735485,
+        "max": 0.0037207030691206455,
+        "absmax": 0.004101562313735485,
+        "mean": 2.882795797631843e-07,
+        "std": 0.0006297945510596037,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 194,
+        "name": "decoder.stages.0.naf.1.norm2",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -4.364684581756592,
+        "max": 4.196081638336182,
+        "absmax": 4.364684581756592,
+        "mean": 7.761021270091817e-10,
+        "std": 0.9999980330467224,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 195,
+        "name": "decoder.stages.0.naf.1.conv4",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          192,
+          32,
+          32
+        ],
+        "min": -4.44921875,
+        "max": 4.484375,
+        "absmax": 4.484375,
+        "mean": -0.005144813563674688,
+        "std": 1.0038368701934814,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 196,
+        "name": "decoder.stages.0.naf.1.gate2",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -9.046875,
+        "max": 12.4921875,
+        "absmax": 12.4921875,
+        "mean": -0.0008400377701036632,
+        "std": 1.0067713260650635,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 197,
+        "name": "decoder.stages.0.naf.1.conv5",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -5.69921875,
+        "max": 4.30859375,
+        "absmax": 5.69921875,
+        "mean": -0.003070397302508354,
+        "std": 1.0092066526412964,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 198,
+        "name": "decoder.stages.0.naf.1.scale2",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -0.05699218437075615,
+        "max": 0.043085936456918716,
+        "absmax": 0.05699218437075615,
+        "mean": -3.0703969969181344e-05,
+        "std": 0.01009206660091877,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 199,
+        "name": "decoder.stages.0.naf.2.norm1",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -4.385214805603027,
+        "max": 4.215722560882568,
+        "absmax": 4.385214805603027,
+        "mean": 4.656612873077393e-10,
+        "std": 0.9999980330467224,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 200,
+        "name": "decoder.stages.0.naf.2.conv1",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          192,
+          32,
+          32
+        ],
+        "min": -4.26953125,
+        "max": 4.68359375,
+        "absmax": 4.68359375,
+        "mean": -0.018095122650265694,
+        "std": 0.9980761408805847,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 201,
+        "name": "decoder.stages.0.naf.2.dwconv",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          192,
+          32,
+          32
+        ],
+        "min": -6.50390625,
+        "max": 6.00390625,
+        "absmax": 6.50390625,
+        "mean": -0.010568072088062763,
+        "std": 0.9938665628433228,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 202,
+        "name": "decoder.stages.0.naf.2.gate1",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -11.75,
+        "max": 13.265625,
+        "absmax": 13.265625,
+        "mean": 0.009122506715357304,
+        "std": 0.9838589429855347,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 203,
+        "name": "decoder.stages.0.naf.2.sca",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          1,
+          1
+        ],
+        "min": -0.1746826171875,
+        "max": 0.173095703125,
+        "absmax": 0.1746826171875,
+        "mean": -0.007700102869421244,
+        "std": 0.06847086548805237,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 204,
+        "name": "decoder.stages.0.naf.2.conv3",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -0.390869140625,
+        "max": 0.37646484375,
+        "absmax": 0.390869140625,
+        "mean": 0.0001630928454687819,
+        "std": 0.06824365258216858,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 205,
+        "name": "decoder.stages.0.naf.2.scale1",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -0.0039086914621293545,
+        "max": 0.0037646484561264515,
+        "absmax": 0.0039086914621293545,
+        "mean": 1.6309285228999215e-06,
+        "std": 0.0006824365118518472,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 206,
+        "name": "decoder.stages.0.naf.2.norm2",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -4.388298034667969,
+        "max": 4.216128349304199,
+        "absmax": 4.388298034667969,
+        "mean": 6.208817349140361e-10,
+        "std": 0.9999980330467224,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 207,
+        "name": "decoder.stages.0.naf.2.conv4",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          192,
+          32,
+          32
+        ],
+        "min": -5.08203125,
+        "max": 4.6171875,
+        "absmax": 5.08203125,
+        "mean": -0.004699308425188065,
+        "std": 1.00859797000885,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 208,
+        "name": "decoder.stages.0.naf.2.gate2",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -10.09375,
+        "max": 8.5703125,
+        "absmax": 10.09375,
+        "mean": 0.0129983676597476,
+        "std": 1.0149372816085815,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 209,
+        "name": "decoder.stages.0.naf.2.conv5",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -5.5390625,
+        "max": 5.015625,
+        "absmax": 5.5390625,
+        "mean": -0.02655363269150257,
+        "std": 1.0111174583435059,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 210,
+        "name": "decoder.stages.0.naf.2.scale2",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -0.0553906224668026,
+        "max": 0.05015625059604645,
+        "absmax": 0.0553906224668026,
+        "mean": -0.0002655362768564373,
+        "std": 0.010111174546182156,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 211,
+        "name": "decoder.stages.0.naf.3.norm1",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -4.382336139678955,
+        "max": 4.228554725646973,
+        "absmax": 4.382336139678955,
+        "mean": -7.761021270091817e-10,
+        "std": 0.9999980330467224,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 212,
+        "name": "decoder.stages.0.naf.3.conv1",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          192,
+          32,
+          32
+        ],
+        "min": -4.3984375,
+        "max": 5.5859375,
+        "absmax": 5.5859375,
+        "mean": 0.00038466768455691636,
+        "std": 0.9940446615219116,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 213,
+        "name": "decoder.stages.0.naf.3.dwconv",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          192,
+          32,
+          32
+        ],
+        "min": -5.01953125,
+        "max": 4.9296875,
+        "absmax": 5.01953125,
+        "mean": -0.001178040518425405,
+        "std": 0.9615240097045898,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 214,
+        "name": "decoder.stages.0.naf.3.gate1",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -11.3671875,
+        "max": 10.7421875,
+        "absmax": 11.3671875,
+        "mean": 0.007311925757676363,
+        "std": 0.9168714880943298,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 215,
+        "name": "decoder.stages.0.naf.3.sca",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          1,
+          1
+        ],
+        "min": -0.1502685546875,
+        "max": 0.2119140625,
+        "absmax": 0.2119140625,
+        "mean": 0.0015225062379613519,
+        "std": 0.06180603429675102,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 216,
+        "name": "decoder.stages.0.naf.3.conv3",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -0.403076171875,
+        "max": 0.3544921875,
+        "absmax": 0.403076171875,
+        "mean": 0.0006940209423191845,
+        "std": 0.05655081942677498,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 217,
+        "name": "decoder.stages.0.naf.3.scale1",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -0.0040307617746293545,
+        "max": 0.0035449217539280653,
+        "absmax": 0.0040307617746293545,
+        "mean": 6.940209914318984e-06,
+        "std": 0.000565508205909282,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 218,
+        "name": "decoder.stages.0.naf.3.norm2",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -4.382003307342529,
+        "max": 4.229229927062988,
+        "absmax": 4.382003307342529,
+        "mean": -1.0865429667106241e-09,
+        "std": 0.9999980330467224,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 219,
+        "name": "decoder.stages.0.naf.3.conv4",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          192,
+          32,
+          32
+        ],
+        "min": -4.48046875,
+        "max": 4.3828125,
+        "absmax": 4.48046875,
+        "mean": -0.0005824084510095417,
+        "std": 0.9939500093460083,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 220,
+        "name": "decoder.stages.0.naf.3.gate2",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -11.921875,
+        "max": 9.96875,
+        "absmax": 11.921875,
+        "mean": 0.006099550053477287,
+        "std": 0.9854458570480347,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 221,
+        "name": "decoder.stages.0.naf.3.conv5",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -4.87109375,
+        "max": 4.890625,
+        "absmax": 4.890625,
+        "mean": -0.017886793240904808,
+        "std": 0.9861372113227844,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 222,
+        "name": "decoder.stages.0.naf.3.scale2",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          96,
+          32,
+          32
+        ],
+        "min": -0.048710934817790985,
+        "max": 0.048906248062849045,
+        "absmax": 0.048906248062849045,
+        "mean": -0.00017886789282783866,
+        "std": 0.009861372411251068,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 223,
+        "name": "decoder.stages.1.upsample.proj",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          192,
+          32,
+          32
+        ],
+        "min": -2.744140625,
+        "max": 2.650390625,
+        "absmax": 2.744140625,
+        "mean": -0.012456339783966541,
+        "std": 0.5242913365364075,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 224,
+        "name": "decoder.stages.1.upsample.idwt",
+        "class": "HaarIDWT",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -2.6796875,
+        "max": 2.958984375,
+        "absmax": 2.958984375,
+        "mean": -0.017234645783901215,
+        "std": 0.5241557955741882,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 225,
+        "name": "decoder.stages.1.fusion.project",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -2.927734375,
+        "max": 2.939453125,
+        "absmax": 2.939453125,
+        "mean": -0.012347432784736156,
+        "std": 0.6588542461395264,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 226,
+        "name": "decoder.stages.1.fusion.squeeze",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          12,
+          1,
+          1
+        ],
+        "min": -0.326904296875,
+        "max": 0.4287109375,
+        "absmax": 0.4287109375,
+        "mean": -0.027099609375,
+        "std": 0.2244628369808197,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 227,
+        "name": "decoder.stages.1.fusion.excite",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          1,
+          1
+        ],
+        "min": -0.40771484375,
+        "max": 0.53271484375,
+        "absmax": 0.53271484375,
+        "mean": 0.054350078105926514,
+        "std": 0.22852332890033722,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 228,
+        "name": "decoder.stages.1.gsa",
+        "class": "Sequential",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -2.2370548248291016,
+        "max": 2.345123291015625,
+        "absmax": 2.345123291015625,
+        "mean": 0.01092348899692297,
+        "std": 0.46630606055259705,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 229,
+        "name": "decoder.stages.1.naf.0.norm1",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -4.34604549407959,
+        "max": 4.0697221755981445,
+        "absmax": 4.34604549407959,
+        "mean": 1.2417634698280722e-09,
+        "std": 0.9999974966049194,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 230,
+        "name": "decoder.stages.1.naf.0.conv1",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          64,
+          64
+        ],
+        "min": -4.33203125,
+        "max": 4.23046875,
+        "absmax": 4.33203125,
+        "mean": 0.020432375371456146,
+        "std": 0.983217179775238,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 231,
+        "name": "decoder.stages.1.naf.0.dwconv",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          64,
+          64
+        ],
+        "min": -5.53125,
+        "max": 5.25,
+        "absmax": 5.53125,
+        "mean": -0.011658764444291592,
+        "std": 0.9730759859085083,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 232,
+        "name": "decoder.stages.1.naf.0.gate1",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -12.703125,
+        "max": 13.515625,
+        "absmax": 13.515625,
+        "mean": 0.008471183478832245,
+        "std": 0.9462711215019226,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 233,
+        "name": "decoder.stages.1.naf.0.sca",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          1,
+          1
+        ],
+        "min": -0.197998046875,
+        "max": 0.2110595703125,
+        "absmax": 0.2110595703125,
+        "mean": 0.0027956862468272448,
+        "std": 0.09755882620811462,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 234,
+        "name": "decoder.stages.1.naf.0.conv3",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -0.568359375,
+        "max": 0.5947265625,
+        "absmax": 0.5947265625,
+        "mean": -0.0020975801162421703,
+        "std": 0.09360194951295853,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 235,
+        "name": "decoder.stages.1.naf.0.scale1",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -0.005683593451976776,
+        "max": 0.005947265308350325,
+        "absmax": 0.005947265308350325,
+        "mean": -2.0975799998268485e-05,
+        "std": 0.000936019467189908,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 236,
+        "name": "decoder.stages.1.naf.0.norm2",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -4.346218109130859,
+        "max": 4.07096004486084,
+        "absmax": 4.346218109130859,
+        "mean": -1.0089328261742025e-09,
+        "std": 0.9999974966049194,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 237,
+        "name": "decoder.stages.1.naf.0.conv4",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          64,
+          64
+        ],
+        "min": -4.79296875,
+        "max": 4.734375,
+        "absmax": 4.79296875,
+        "mean": 0.006260083522647619,
+        "std": 1.013882040977478,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 238,
+        "name": "decoder.stages.1.naf.0.gate2",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -9.7578125,
+        "max": 9.1796875,
+        "absmax": 9.7578125,
+        "mean": 0.02694421261548996,
+        "std": 1.0183210372924805,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 239,
+        "name": "decoder.stages.1.naf.0.conv5",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -5.3203125,
+        "max": 5.609375,
+        "absmax": 5.609375,
+        "mean": -0.0410316102206707,
+        "std": 1.0266329050064087,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 240,
+        "name": "decoder.stages.1.naf.0.scale2",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -0.053203124552965164,
+        "max": 0.05609374865889549,
+        "absmax": 0.05609374865889549,
+        "mean": -0.0004103161336388439,
+        "std": 0.010266329161822796,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 241,
+        "name": "decoder.stages.1.naf.1.norm1",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -4.343640327453613,
+        "max": 4.093018531799316,
+        "absmax": 4.343640327453613,
+        "mean": 7.761021686425451e-11,
+        "std": 0.9999974966049194,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 242,
+        "name": "decoder.stages.1.naf.1.conv1",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          64,
+          64
+        ],
+        "min": -4.453125,
+        "max": 4.39453125,
+        "absmax": 4.453125,
+        "mean": -0.011491619050502777,
+        "std": 0.9855147004127502,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 243,
+        "name": "decoder.stages.1.naf.1.dwconv",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          64,
+          64
+        ],
+        "min": -4.8984375,
+        "max": 5.71875,
+        "absmax": 5.71875,
+        "mean": -0.008866678923368454,
+        "std": 0.9342764616012573,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 244,
+        "name": "decoder.stages.1.naf.1.gate1",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -11.171875,
+        "max": 11.171875,
+        "absmax": 11.171875,
+        "mean": -0.0028686514124274254,
+        "std": 0.8688485622406006,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 245,
+        "name": "decoder.stages.1.naf.1.sca",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          1,
+          1
+        ],
+        "min": -0.261474609375,
+        "max": 0.1705322265625,
+        "absmax": 0.261474609375,
+        "mean": -0.007096424698829651,
+        "std": 0.07837937772274017,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 246,
+        "name": "decoder.stages.1.naf.1.conv3",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -0.49658203125,
+        "max": 0.51318359375,
+        "absmax": 0.51318359375,
+        "mean": -0.0013156029162928462,
+        "std": 0.07072768360376358,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 247,
+        "name": "decoder.stages.1.naf.1.scale1",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -0.004965820349752903,
+        "max": 0.005131836049258709,
+        "absmax": 0.005131836049258709,
+        "mean": -1.315602730755927e-05,
+        "std": 0.0007072768057696521,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 248,
+        "name": "decoder.stages.1.naf.1.norm2",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -4.342002868652344,
+        "max": 4.090500831604004,
+        "absmax": 4.342002868652344,
+        "mean": -1.0089328261742025e-09,
+        "std": 0.9999974966049194,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 249,
+        "name": "decoder.stages.1.naf.1.conv4",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          64,
+          64
+        ],
+        "min": -4.23046875,
+        "max": 4.6484375,
+        "absmax": 4.6484375,
+        "mean": -0.013707584701478481,
+        "std": 0.9948477149009705,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 250,
+        "name": "decoder.stages.1.naf.1.gate2",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -11.1796875,
+        "max": 9.046875,
+        "absmax": 11.1796875,
+        "mean": -0.016197843477129936,
+        "std": 1.0018644332885742,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 251,
+        "name": "decoder.stages.1.naf.1.conv5",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -5.0703125,
+        "max": 5.44140625,
+        "absmax": 5.44140625,
+        "mean": 0.02673608623445034,
+        "std": 1.0075492858886719,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 252,
+        "name": "decoder.stages.1.naf.1.scale2",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -0.05070312321186066,
+        "max": 0.0544140599668026,
+        "absmax": 0.0544140599668026,
+        "mean": 0.0002673608250916004,
+        "std": 0.010075492784380913,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 253,
+        "name": "decoder.stages.1.naf.2.norm1",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -4.33254861831665,
+        "max": 4.10400915145874,
+        "absmax": 4.33254861831665,
+        "mean": -1.2417634698280722e-09,
+        "std": 0.9999974966049194,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 254,
+        "name": "decoder.stages.1.naf.2.conv1",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          64,
+          64
+        ],
+        "min": -4.66015625,
+        "max": 4.71875,
+        "absmax": 4.71875,
+        "mean": -0.00445525860413909,
+        "std": 0.9804872274398804,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 255,
+        "name": "decoder.stages.1.naf.2.dwconv",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          64,
+          64
+        ],
+        "min": -5.17578125,
+        "max": 5.2734375,
+        "absmax": 5.2734375,
+        "mean": 0.011350576765835285,
+        "std": 0.9738361835479736,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 256,
+        "name": "decoder.stages.1.naf.2.gate1",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -14.3359375,
+        "max": 10.9765625,
+        "absmax": 14.3359375,
+        "mean": 0.005412986967712641,
+        "std": 0.9415465593338013,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 257,
+        "name": "decoder.stages.1.naf.2.sca",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          1,
+          1
+        ],
+        "min": -0.2196044921875,
+        "max": 0.194091796875,
+        "absmax": 0.2196044921875,
+        "mean": -0.01947973109781742,
+        "std": 0.08371159434318542,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 258,
+        "name": "decoder.stages.1.naf.2.conv3",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -0.479736328125,
+        "max": 0.450439453125,
+        "absmax": 0.479736328125,
+        "mean": -0.001288153580389917,
+        "std": 0.07812386006116867,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 259,
+        "name": "decoder.stages.1.naf.2.scale1",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -0.0047973631881177425,
+        "max": 0.004504394251853228,
+        "absmax": 0.0047973631881177425,
+        "mean": -1.2881537259090692e-05,
+        "std": 0.0007812385447323322,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 260,
+        "name": "decoder.stages.1.naf.2.norm2",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -4.3304009437561035,
+        "max": 4.1022539138793945,
+        "absmax": 4.3304009437561035,
+        "mean": 3.1044086745701804e-10,
+        "std": 0.9999974966049194,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 261,
+        "name": "decoder.stages.1.naf.2.conv4",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          64,
+          64
+        ],
+        "min": -4.2109375,
+        "max": 4.4921875,
+        "absmax": 4.4921875,
+        "mean": 0.001293044537305832,
+        "std": 0.984890878200531,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 262,
+        "name": "decoder.stages.1.naf.2.gate2",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -11.015625,
+        "max": 9.890625,
+        "absmax": 11.015625,
+        "mean": 0.032635439187288284,
+        "std": 0.9718723297119141,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 263,
+        "name": "decoder.stages.1.naf.2.conv5",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -4.95703125,
+        "max": 5.3203125,
+        "absmax": 5.3203125,
+        "mean": -0.015776921063661575,
+        "std": 0.9652172327041626,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 264,
+        "name": "decoder.stages.1.naf.2.scale2",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -0.04957031086087227,
+        "max": 0.053203124552965164,
+        "absmax": 0.053203124552965164,
+        "mean": -0.00015776923100929707,
+        "std": 0.009652172215282917,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 265,
+        "name": "decoder.stages.1.naf.3.norm1",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -4.361863613128662,
+        "max": 4.1248064041137695,
+        "absmax": 4.361863613128662,
+        "mean": -3.8805106350459084e-10,
+        "std": 0.9999974966049194,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 266,
+        "name": "decoder.stages.1.naf.3.conv1",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          64,
+          64
+        ],
+        "min": -4.359375,
+        "max": 4.125,
+        "absmax": 4.359375,
+        "mean": -0.011139355599880219,
+        "std": 1.0118968486785889,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 267,
+        "name": "decoder.stages.1.naf.3.dwconv",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          64,
+          64
+        ],
+        "min": -5.3125,
+        "max": 5.59375,
+        "absmax": 5.59375,
+        "mean": 0.03264760971069336,
+        "std": 0.9593055248260498,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 268,
+        "name": "decoder.stages.1.naf.3.gate1",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -12.4140625,
+        "max": 10.9921875,
+        "absmax": 12.4140625,
+        "mean": -0.022006219252943993,
+        "std": 0.9183371663093567,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 269,
+        "name": "decoder.stages.1.naf.3.sca",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          1,
+          1
+        ],
+        "min": -0.255126953125,
+        "max": 0.2176513671875,
+        "absmax": 0.255126953125,
+        "mean": -0.01976860500872135,
+        "std": 0.10247869044542313,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 270,
+        "name": "decoder.stages.1.naf.3.conv3",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -0.58544921875,
+        "max": 0.5703125,
+        "absmax": 0.58544921875,
+        "mean": 0.0018737373175099492,
+        "std": 0.09151092171669006,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 271,
+        "name": "decoder.stages.1.naf.3.scale1",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -0.005854492075741291,
+        "max": 0.005703124683350325,
+        "absmax": 0.005854492075741291,
+        "mean": 1.8737373466137797e-05,
+        "std": 0.0009151092381216586,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 272,
+        "name": "decoder.stages.1.naf.3.norm2",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -4.3621063232421875,
+        "max": 4.122888088226318,
+        "absmax": 4.3621063232421875,
+        "mean": 5.432714833553121e-10,
+        "std": 0.9999974966049194,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 273,
+        "name": "decoder.stages.1.naf.3.conv4",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          96,
+          64,
+          64
+        ],
+        "min": -4.22265625,
+        "max": 4.40625,
+        "absmax": 4.40625,
+        "mean": -0.031155655160546303,
+        "std": 0.9978330731391907,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 274,
+        "name": "decoder.stages.1.naf.3.gate2",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -12.0390625,
+        "max": 10.0859375,
+        "absmax": 12.0390625,
+        "mean": -0.045601919293403625,
+        "std": 0.9985069036483765,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 275,
+        "name": "decoder.stages.1.naf.3.conv5",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -5.28515625,
+        "max": 5.39453125,
+        "absmax": 5.39453125,
+        "mean": -0.004160565789788961,
+        "std": 1.0057193040847778,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 276,
+        "name": "decoder.stages.1.naf.3.scale2",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          48,
+          64,
+          64
+        ],
+        "min": -0.052851561456918716,
+        "max": 0.05394531041383743,
+        "absmax": 0.05394531041383743,
+        "mean": -4.160566095379181e-05,
+        "std": 0.010057193227112293,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 277,
+        "name": "head.project",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          128,
+          64,
+          64
+        ],
+        "min": -2.28515625,
+        "max": 2.197265625,
+        "absmax": 2.28515625,
+        "mean": -0.007782022003084421,
+        "std": 0.45870041847229004,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 278,
+        "name": "head.idwt_mid",
+        "class": "HaarIDWT",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          32,
+          128,
+          128
+        ],
+        "min": -2.2265625,
+        "max": 2.48828125,
+        "absmax": 2.48828125,
+        "mean": -0.01782805472612381,
+        "std": 0.4584200382232666,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 279,
+        "name": "head.blocks.0.norm1",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          32,
+          128,
+          128
+        ],
+        "min": -4.05078125,
+        "max": 4.0859375,
+        "absmax": 4.0859375,
+        "mean": -3.2223761081695557e-07,
+        "std": 1.0000009536743164,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 280,
+        "name": "head.blocks.0.conv1",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          64,
+          128,
+          128
+        ],
+        "min": -4.34375,
+        "max": 4.5234375,
+        "absmax": 4.5234375,
+        "mean": 0.008712133392691612,
+        "std": 0.9672631621360779,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 281,
+        "name": "head.blocks.0.dwconv",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          64,
+          128,
+          128
+        ],
+        "min": -5.66015625,
+        "max": 5.296875,
+        "absmax": 5.66015625,
+        "mean": 0.022649822756648064,
+        "std": 0.9431661367416382,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 282,
+        "name": "head.blocks.0.gate1",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          32,
+          128,
+          128
+        ],
+        "min": -12.484375,
+        "max": 13.2734375,
+        "absmax": 13.2734375,
+        "mean": -0.01996781677007675,
+        "std": 0.8916867971420288,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 283,
+        "name": "head.blocks.0.sca",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          32,
+          1,
+          1
+        ],
+        "min": -0.1551513671875,
+        "max": 0.1348876953125,
+        "absmax": 0.1551513671875,
+        "mean": -0.00018519163131713867,
+        "std": 0.06938458234071732,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 284,
+        "name": "head.blocks.0.conv3",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          32,
+          128,
+          128
+        ],
+        "min": -0.443359375,
+        "max": 0.459716796875,
+        "absmax": 0.459716796875,
+        "mean": -0.0010856110602617264,
+        "std": 0.0573379248380661,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 285,
+        "name": "head.blocks.0.scale1",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          32,
+          128,
+          128
+        ],
+        "min": -0.004433593712747097,
+        "max": 0.0045971679501235485,
+        "absmax": 0.0045971679501235485,
+        "mean": -1.0856109838641714e-05,
+        "std": 0.0005733792204409838,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 286,
+        "name": "head.blocks.0.norm2",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          32,
+          128,
+          128
+        ],
+        "min": -4.050270080566406,
+        "max": 4.083998203277588,
+        "absmax": 4.083998203277588,
+        "mean": 1.1641532182693481e-09,
+        "std": 0.9999972581863403,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 287,
+        "name": "head.blocks.0.conv4",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          64,
+          128,
+          128
+        ],
+        "min": -4.79296875,
+        "max": 4.67578125,
+        "absmax": 4.79296875,
+        "mean": 0.032896194607019424,
+        "std": 1.0067722797393799,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 288,
+        "name": "head.blocks.0.gate2",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          32,
+          128,
+          128
+        ],
+        "min": -9.7578125,
+        "max": 10.4375,
+        "absmax": 10.4375,
+        "mean": 0.007600073702633381,
+        "std": 1.0173712968826294,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 289,
+        "name": "head.blocks.0.conv5",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          32,
+          128,
+          128
+        ],
+        "min": -5.828125,
+        "max": 5.9921875,
+        "absmax": 5.9921875,
+        "mean": 0.013693494722247124,
+        "std": 1.0198290348052979,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 290,
+        "name": "head.blocks.0.scale2",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          32,
+          128,
+          128
+        ],
+        "min": -0.058281250298023224,
+        "max": 0.05992187187075615,
+        "absmax": 0.05992187187075615,
+        "mean": 0.0001369349774904549,
+        "std": 0.010198290459811687,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 291,
+        "name": "head.blocks.1.norm1",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          32,
+          128,
+          128
+        ],
+        "min": -4.060592174530029,
+        "max": 4.090775489807129,
+        "absmax": 4.090775489807129,
+        "mean": -2.3283064365386963e-10,
+        "std": 0.9999972581863403,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 292,
+        "name": "head.blocks.1.conv1",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          64,
+          128,
+          128
+        ],
+        "min": -4.30078125,
+        "max": 4.45703125,
+        "absmax": 4.45703125,
+        "mean": 0.014485901221632957,
+        "std": 0.9846290946006775,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 293,
+        "name": "head.blocks.1.dwconv",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          64,
+          128,
+          128
+        ],
+        "min": -5.82421875,
+        "max": 5.60546875,
+        "absmax": 5.82421875,
+        "mean": -0.002149771898984909,
+        "std": 0.9857681393623352,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 294,
+        "name": "head.blocks.1.gate1",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          32,
+          128,
+          128
+        ],
+        "min": -13.2265625,
+        "max": 14.75,
+        "absmax": 14.75,
+        "mean": 0.004680513869971037,
+        "std": 0.9560580253601074,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 295,
+        "name": "head.blocks.1.sca",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          32,
+          1,
+          1
+        ],
+        "min": -0.1790771484375,
+        "max": 0.1785888671875,
+        "absmax": 0.1790771484375,
+        "mean": 0.00830155611038208,
+        "std": 0.07862032204866409,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 296,
+        "name": "head.blocks.1.conv3",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          32,
+          128,
+          128
+        ],
+        "min": -0.7255859375,
+        "max": 0.6591796875,
+        "absmax": 0.7255859375,
+        "mean": -1.4337419997900724e-05,
+        "std": 0.07940754294395447,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 297,
+        "name": "head.blocks.1.scale1",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          32,
+          128,
+          128
+        ],
+        "min": -0.007255859207361937,
+        "max": 0.006591796875,
+        "absmax": 0.007255859207361937,
+        "mean": -1.433743364032125e-07,
+        "std": 0.0007940754294395447,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 298,
+        "name": "head.blocks.1.norm2",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          32,
+          128,
+          128
+        ],
+        "min": -4.0631022453308105,
+        "max": 4.092414855957031,
+        "absmax": 4.092414855957031,
+        "mean": -4.656612873077393e-10,
+        "std": 0.9999972581863403,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 299,
+        "name": "head.blocks.1.conv4",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          64,
+          128,
+          128
+        ],
+        "min": -4.48046875,
+        "max": 4.640625,
+        "absmax": 4.640625,
+        "mean": 0.004022375680506229,
+        "std": 1.0135834217071533,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 300,
+        "name": "head.blocks.1.gate2",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          32,
+          128,
+          128
+        ],
+        "min": -11.453125,
+        "max": 10.4453125,
+        "absmax": 11.453125,
+        "mean": -0.016729483380913734,
+        "std": 1.0285927057266235,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 301,
+        "name": "head.blocks.1.conv5",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          32,
+          128,
+          128
+        ],
+        "min": -7.609375,
+        "max": 6.5234375,
+        "absmax": 7.609375,
+        "mean": 0.007777480408549309,
+        "std": 1.0351203680038452,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 302,
+        "name": "head.blocks.1.scale2",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          32,
+          128,
+          128
+        ],
+        "min": -0.07609374821186066,
+        "max": 0.06523437052965164,
+        "absmax": 0.07609374821186066,
+        "mean": 7.777480641379952e-05,
+        "std": 0.010351203382015228,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 303,
+        "name": "head.blocks.2.norm1",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          32,
+          128,
+          128
+        ],
+        "min": -4.070117950439453,
+        "max": 4.072514533996582,
+        "absmax": 4.072514533996582,
+        "mean": 2.3283064365386963e-10,
+        "std": 0.9999972581863403,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 304,
+        "name": "head.blocks.2.conv1",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          64,
+          128,
+          128
+        ],
+        "min": -4.37109375,
+        "max": 4.359375,
+        "absmax": 4.37109375,
+        "mean": -0.012589969672262669,
+        "std": 1.0070546865463257,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 305,
+        "name": "head.blocks.2.dwconv",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          64,
+          128,
+          128
+        ],
+        "min": -6.21484375,
+        "max": 7.19140625,
+        "absmax": 7.19140625,
+        "mean": 0.01326710730791092,
+        "std": 1.0489481687545776,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 306,
+        "name": "head.blocks.2.gate1",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          32,
+          128,
+          128
+        ],
+        "min": -14.0078125,
+        "max": 14.8984375,
+        "absmax": 14.8984375,
+        "mean": 0.023937130346894264,
+        "std": 1.080955982208252,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 307,
+        "name": "head.blocks.2.sca",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          32,
+          1,
+          1
+        ],
+        "min": -0.186767578125,
+        "max": 0.2005615234375,
+        "absmax": 0.2005615234375,
+        "mean": 0.006469070911407471,
+        "std": 0.09878551214933395,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 308,
+        "name": "head.blocks.2.conv3",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          32,
+          128,
+          128
+        ],
+        "min": -0.74755859375,
+        "max": 0.70703125,
+        "absmax": 0.74755859375,
+        "mean": -0.0012534644920378923,
+        "std": 0.1034541204571724,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 309,
+        "name": "head.blocks.2.scale1",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          32,
+          128,
+          128
+        ],
+        "min": -0.007475585676729679,
+        "max": 0.007070312276482582,
+        "absmax": 0.007475585676729679,
+        "mean": -1.2534645065898076e-05,
+        "std": 0.0010345411719754338,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 310,
+        "name": "head.blocks.2.norm2",
+        "class": "LayerNorm2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          32,
+          128,
+          128
+        ],
+        "min": -4.070037364959717,
+        "max": 4.074460029602051,
+        "absmax": 4.074460029602051,
+        "mean": -1.1641532182693481e-10,
+        "std": 0.9999972581863403,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 311,
+        "name": "head.blocks.2.conv4",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          64,
+          128,
+          128
+        ],
+        "min": -4.53125,
+        "max": 4.921875,
+        "absmax": 4.921875,
+        "mean": 0.03548499941825867,
+        "std": 1.0011898279190063,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 312,
+        "name": "head.blocks.2.gate2",
+        "class": "SimpleGate",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          32,
+          128,
+          128
+        ],
+        "min": -10.5078125,
+        "max": 11.15625,
+        "absmax": 11.15625,
+        "mean": 0.014990790747106075,
+        "std": 1.0018408298492432,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 313,
+        "name": "head.blocks.2.conv5",
+        "class": "Conv2d",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          32,
+          128,
+          128
+        ],
+        "min": -5.40234375,
+        "max": 5.546875,
+        "absmax": 5.546875,
+        "mean": -0.004495569504797459,
+        "std": 0.9989219903945923,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 314,
+        "name": "head.blocks.2.scale2",
+        "class": "LayerScale",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float32",
+        "shape": [
+          2,
+          32,
+          128,
+          128
+        ],
+        "min": -0.054023437201976776,
+        "max": 0.05546874925494194,
+        "absmax": 0.05546874925494194,
+        "mean": -4.495572648011148e-05,
+        "std": 0.009989219717681408,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 315,
+        "name": "head.to_subbands",
+        "class": "Conv2d",
+        "input_dtype": "torch.float32",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          4,
+          128,
+          128
+        ],
+        "min": -2.2421875,
+        "max": 2.150390625,
+        "absmax": 2.2421875,
+        "mean": 0.012424219399690628,
+        "std": 0.47541627287864685,
+        "has_nan": false,
+        "has_inf": false
+      },
+      {
+        "index": 316,
+        "name": "head.idwt_out",
+        "class": "HaarIDWT",
+        "input_dtype": "torch.float16",
+        "dtype": "torch.float16",
+        "shape": [
+          2,
+          1,
+          256,
+          256
+        ],
+        "min": -2.08203125,
+        "max": 2.0,
+        "absmax": 2.08203125,
+        "mean": -0.050353191792964935,
+        "std": 0.4729064702987671,
+        "has_nan": false,
+        "has_inf": false
+      }
+    ],
+    "by_class": {
+      "RobustNormalizer": {
+        "torch.float32": 1
+      },
+      "Conv2d": {
+        "torch.float16": 155
+      },
+      "SimpleGate": {
+        "torch.float16": 51
+      },
+      "LayerNorm2d": {
+        "torch.float32": 50
+      },
+      "Linear": {
+        "torch.float16": 2
+      },
+      "HaarDWT": {
+        "torch.float32": 3
+      },
+      "LayerScale": {
+        "torch.float32": 46
+      },
+      "Sequential": {
+        "torch.float32": 5
+      },
+      "HaarIDWT": {
+        "torch.float16": 4
+      }
+    },
+    "reduced_precision_outputs": 212,
+    "fp32_outputs": 105,
+    "layer_norm_sites": [
+      {
+        "name": "noise_head.stages.0.norm",
+        "input_dtype": "torch.float16",
+        "output_dtype": "torch.float32",
+        "absmax": 3.60546875
+      },
+      {
+        "name": "noise_head.stages.1.norm",
+        "input_dtype": "torch.float16",
+        "output_dtype": "torch.float32",
+        "absmax": 4.4296875
+      },
+      {
+        "name": "noise_head.stages.2.norm",
+        "input_dtype": "torch.float16",
+        "output_dtype": "torch.float32",
+        "absmax": 4.953125
+      },
+      {
+        "name": "noise_head.stages.3.norm",
+        "input_dtype": "torch.float16",
+        "output_dtype": "torch.float32",
+        "absmax": 5.015625
+      },
+      {
+        "name": "encoder.levels.0.naf.0.norm1",
+        "input_dtype": "torch.float16",
+        "output_dtype": "torch.float32",
+        "absmax": 4.38671875
+      },
+      {
+        "name": "encoder.levels.0.naf.0.norm2",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.389418601989746
+      },
+      {
+        "name": "encoder.levels.0.naf.1.norm1",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.3970537185668945
+      },
+      {
+        "name": "encoder.levels.0.naf.1.norm2",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.397631645202637
+      },
+      {
+        "name": "encoder.levels.0.naf.2.norm1",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.39927339553833
+      },
+      {
+        "name": "encoder.levels.0.naf.2.norm2",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.4001970291137695
+      },
+      {
+        "name": "encoder.levels.0.naf.3.norm1",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.397763729095459
+      },
+      {
+        "name": "encoder.levels.0.naf.3.norm2",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.398190975189209
+      },
+      {
+        "name": "encoder.levels.1.naf.0.norm1",
+        "input_dtype": "torch.float16",
+        "output_dtype": "torch.float32",
+        "absmax": 4.23828125
+      },
+      {
+        "name": "encoder.levels.1.naf.0.norm2",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.239978790283203
+      },
+      {
+        "name": "encoder.levels.1.naf.1.norm1",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.254788875579834
+      },
+      {
+        "name": "encoder.levels.1.naf.1.norm2",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.254968643188477
+      },
+      {
+        "name": "encoder.levels.1.naf.2.norm1",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.247947692871094
+      },
+      {
+        "name": "encoder.levels.1.naf.2.norm2",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.247779846191406
+      },
+      {
+        "name": "encoder.levels.1.naf.3.norm1",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.258089542388916
+      },
+      {
+        "name": "encoder.levels.1.naf.3.norm2",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.257358074188232
+      },
+      {
+        "name": "encoder.levels.2.naf.0.norm1",
+        "input_dtype": "torch.float16",
+        "output_dtype": "torch.float32",
+        "absmax": 4.02734375
+      },
+      {
+        "name": "encoder.levels.2.naf.0.norm2",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.027994155883789
+      },
+      {
+        "name": "encoder.levels.2.naf.1.norm1",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.031723976135254
+      },
+      {
+        "name": "encoder.levels.2.naf.1.norm2",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.03263521194458
+      },
+      {
+        "name": "encoder.levels.2.naf.2.norm1",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.025595188140869
+      },
+      {
+        "name": "encoder.levels.2.naf.2.norm2",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.026918411254883
+      },
+      {
+        "name": "encoder.levels.2.naf.3.norm1",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.045083045959473
+      },
+      {
+        "name": "encoder.levels.2.naf.3.norm2",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.0450758934021
+      },
+      {
+        "name": "decoder.stages.0.naf.0.norm1",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.356385231018066
+      },
+      {
+        "name": "decoder.stages.0.naf.0.norm2",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.35870885848999
+      },
+      {
+        "name": "decoder.stages.0.naf.1.norm1",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.364363670349121
+      },
+      {
+        "name": "decoder.stages.0.naf.1.norm2",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.364684581756592
+      },
+      {
+        "name": "decoder.stages.0.naf.2.norm1",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.385214805603027
+      },
+      {
+        "name": "decoder.stages.0.naf.2.norm2",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.388298034667969
+      },
+      {
+        "name": "decoder.stages.0.naf.3.norm1",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.382336139678955
+      },
+      {
+        "name": "decoder.stages.0.naf.3.norm2",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.382003307342529
+      },
+      {
+        "name": "decoder.stages.1.naf.0.norm1",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.34604549407959
+      },
+      {
+        "name": "decoder.stages.1.naf.0.norm2",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.346218109130859
+      },
+      {
+        "name": "decoder.stages.1.naf.1.norm1",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.343640327453613
+      },
+      {
+        "name": "decoder.stages.1.naf.1.norm2",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.342002868652344
+      },
+      {
+        "name": "decoder.stages.1.naf.2.norm1",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.33254861831665
+      },
+      {
+        "name": "decoder.stages.1.naf.2.norm2",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.3304009437561035
+      },
+      {
+        "name": "decoder.stages.1.naf.3.norm1",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.361863613128662
+      },
+      {
+        "name": "decoder.stages.1.naf.3.norm2",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.3621063232421875
+      },
+      {
+        "name": "head.blocks.0.norm1",
+        "input_dtype": "torch.float16",
+        "output_dtype": "torch.float32",
+        "absmax": 4.0859375
+      },
+      {
+        "name": "head.blocks.0.norm2",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.083998203277588
+      },
+      {
+        "name": "head.blocks.1.norm1",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.090775489807129
+      },
+      {
+        "name": "head.blocks.1.norm2",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.092414855957031
+      },
+      {
+        "name": "head.blocks.2.norm1",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.072514533996582
+      },
+      {
+        "name": "head.blocks.2.norm2",
+        "input_dtype": "torch.float32",
+        "output_dtype": "torch.float32",
+        "absmax": 4.074460029602051
+      }
+    ],
+    "layer_norm_reduced_inputs": [
+      "noise_head.stages.0.norm",
+      "noise_head.stages.1.norm",
+      "noise_head.stages.2.norm",
+      "noise_head.stages.3.norm",
+      "encoder.levels.0.naf.0.norm1",
+      "encoder.levels.1.naf.0.norm1",
+      "encoder.levels.2.naf.0.norm1",
+      "head.blocks.0.norm1"
+    ],
+    "worst_headroom": [
+      {
+        "name": "encoder.levels.0.naf.3.gate1",
+        "class": "SimpleGate",
+        "dtype": "torch.float16",
+        "absmax": 17.484375
+      },
+      {
+        "name": "encoder.levels.1.naf.2.gate1",
+        "class": "SimpleGate",
+        "dtype": "torch.float16",
+        "absmax": 15.6328125
+      },
+      {
+        "name": "decoder.stages.0.naf.1.gate1",
+        "class": "SimpleGate",
+        "dtype": "torch.float16",
+        "absmax": 15.2421875
+      },
+      {
+        "name": "encoder.levels.0.naf.2.gate1",
+        "class": "SimpleGate",
+        "dtype": "torch.float16",
+        "absmax": 15.015625
+      },
+      {
+        "name": "head.blocks.2.gate1",
+        "class": "SimpleGate",
+        "dtype": "torch.float16",
+        "absmax": 14.8984375
+      },
+      {
+        "name": "head.blocks.1.gate1",
+        "class": "SimpleGate",
+        "dtype": "torch.float16",
+        "absmax": 14.75
+      },
+      {
+        "name": "encoder.levels.0.naf.0.gate1",
+        "class": "SimpleGate",
+        "dtype": "torch.float16",
+        "absmax": 14.7265625
+      },
+      {
+        "name": "decoder.stages.1.naf.2.gate1",
+        "class": "SimpleGate",
+        "dtype": "torch.float16",
+        "absmax": 14.3359375
+      },
+      {
+        "name": "encoder.levels.2.naf.0.gate1",
+        "class": "SimpleGate",
+        "dtype": "torch.float16",
+        "absmax": 14.3046875
+      },
+      {
+        "name": "encoder.levels.0.naf.1.gate1",
+        "class": "SimpleGate",
+        "dtype": "torch.float16",
+        "absmax": 14.0078125
+      },
+      {
+        "name": "encoder.levels.1.naf.1.gate1",
+        "class": "SimpleGate",
+        "dtype": "torch.float16",
+        "absmax": 13.875
+      },
+      {
+        "name": "decoder.stages.1.naf.0.gate1",
+        "class": "SimpleGate",
+        "dtype": "torch.float16",
+        "absmax": 13.515625
+      }
+    ]
+  },
+  "losses": [
+    {
+      "term": "charbonnier",
+      "returned_dtype": "torch.float32",
+      "internal_conv_dtypes": [
+        "n/a (no conv2d)"
+      ],
+      "value": 0.33292675018310547,
+      "finite": true
+    },
+    {
+      "term": "ms_ssim",
+      "returned_dtype": "torch.float32",
+      "internal_conv_dtypes": [
+        "torch.float16"
+      ],
+      "value": 0.9284639954566956,
+      "finite": true
+    },
+    {
+      "term": "wavelet",
+      "returned_dtype": "torch.float32",
+      "internal_conv_dtypes": [
+        "n/a (no conv2d)"
+      ],
+      "value": 0.3271423876285553,
+      "finite": true
+    },
+    {
+      "term": "fft",
+      "returned_dtype": "torch.float32",
+      "internal_conv_dtypes": [
+        "n/a (no conv2d)"
+      ],
+      "value": 0.14982929825782776,
+      "finite": true
+    },
+    {
+      "term": "gradient",
+      "returned_dtype": "torch.float32",
+      "internal_conv_dtypes": [
+        "torch.float16"
+      ],
+      "value": 0.14255142211914062,
+      "finite": true
+    }
+  ]
+}

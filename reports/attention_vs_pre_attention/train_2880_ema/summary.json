@@ -1,0 +1,137 @@
+{
+  "schema": "attention_vs_pre_attention/v1",
+  "generated_utc": "2026-08-11T17:54:44Z",
+  "environment": {
+    "python": "3.10.9",
+    "torch": "2.10.0+cpu",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "device": "cpu",
+    "amp_dtype": "fp32",
+    "cuda_available": false
+  },
+  "configuration": {
+    "split": "train",
+    "n_images": 2880,
+    "limit": 0,
+    "packed_root": "C:\\Users\\Ashish Kumar\\Desktop\\Image restoration\\data\\packed",
+    "weight_source": "ema",
+    "seed": 1337,
+    "index_range": [
+      32,
+      3199
+    ]
+  },
+  "models": {
+    "pre": {
+      "checkpoint": "checkpoints\\pre_attention_baseline_50ep\\best_ema_psnr.pt",
+      "parameters": 1737562,
+      "epoch": 29,
+      "use_attention": false,
+      "variant": "sparc-base (pre-attention, weights=ema)"
+    },
+    "attn": {
+      "checkpoint": "checkpoints\\sparc_base_50\\best_ema_psnr.pt",
+      "parameters": 2345650,
+      "epoch": 29,
+      "use_attention": true,
+      "variant": "sparc-base (attention, weights=ema)"
+    },
+    "parameter_overhead_pct": 34.996621703283104
+  },
+  "summary": {
+    "psnr_pre": {
+      "mean": 27.983145398724304,
+      "median": 27.818225352289563,
+      "std": 4.783023891903006,
+      "min": 11.10285449691097,
+      "max": 42.779351363058915
+    },
+    "psnr_attn": {
+      "mean": 27.965194524979502,
+      "median": 27.816967817723473,
+      "std": 4.7804012509746565,
+      "min": 11.025167932233016,
+      "max": 43.02092014756294
+    },
+    "ssim_pre": {
+      "mean": 0.75197046139381,
+      "median": 0.7830899953842163,
+      "std": 0.16190516770620544,
+      "min": 0.1828719526529312,
+      "max": 0.9849240779876709
+    },
+    "ssim_attn": {
+      "mean": 0.750837935321033,
+      "median": 0.7829461395740509,
+      "std": 0.16241152724444574,
+      "min": 0.1913689523935318,
+      "max": 0.985066831111908
+    }
+  },
+  "paired_statistics": {
+    "psnr_delta": {
+      "n": 2880,
+      "mean": -0.017950873744803912,
+      "median": -0.013716955831327482,
+      "std": 0.13394813443042036,
+      "ci95_low": -0.022844954553547674,
+      "ci95_high": -0.013056792936060152,
+      "t_statistic": -7.191925284140168,
+      "t_pvalue": 8.108250408700774e-13,
+      "wilcoxon_statistic": 1651288.0,
+      "wilcoxon_pvalue": 2.567579647952795e-21,
+      "cohens_dz": -0.13401361520364086,
+      "n_improved": 1240,
+      "n_degraded": 1638,
+      "n_tied": 2,
+      "pct_improved": 43.05555555555556,
+      "pct_degraded": 56.875,
+      "largest_improvement": 1.2476207133851958,
+      "largest_degradation": -1.8231382423146627
+    },
+    "ssim_delta": {
+      "n": 2880,
+      "mean": -0.0011325260727769798,
+      "median": -0.0005845725536346436,
+      "std": 0.00864196556336156,
+      "ci95_low": -0.0014482787183313097,
+      "ci95_high": -0.0008167734272226497,
+      "t_statistic": -7.03285917941606,
+      "t_pvalue": 2.5175142919849364e-12,
+      "wilcoxon_statistic": 1638583.5,
+      "wilcoxon_pvalue": 1.6122551601354152e-22,
+      "cohens_dz": -0.13104959334464747,
+      "n_improved": 1187,
+      "n_degraded": 1684,
+      "n_tied": 9,
+      "pct_improved": 41.21527777777778,
+      "pct_degraded": 58.47222222222222,
+      "largest_improvement": 0.06421738862991333,
+      "largest_degradation": -0.10992032289505005
+    }
+  },
+  "latency": {
+    "pre": {
+      "mean_ms": 258.05518999968626,
+      "median_ms": 254.60199999906763,
+      "std_ms": 21.471088851842467,
+      "repeats": 20
+    },
+    "attn": {
+      "mean_ms": 377.8995050002777,
+      "median_ms": 373.42679999892425,
+      "std_ms": 46.582952066883436,
+      "repeats": 20
+    },
+    "overhead_pct": 46.67080384297522
+  },
+  "visuals": {
+    "largest_improvement": "outputs\\attention_vs_pre_attention\\train_2880_ema\\visuals\\largest_improvement_002415.png",
+    "largest_degradation": "outputs\\attention_vs_pre_attention\\train_2880_ema\\visuals\\largest_degradation_001884.png",
+    "median_case": "outputs\\attention_vs_pre_attention\\train_2880_ema\\visuals\\median_case_002868.png",
+    "worst_absolute_psnr": "outputs\\attention_vs_pre_attention\\train_2880_ema\\visuals\\worst_absolute_psnr_000627.png",
+    "random_0": "outputs\\attention_vs_pre_attention\\train_2880_ema\\visuals\\random_0_001763.png",
+    "random_1": "outputs\\attention_vs_pre_attention\\train_2880_ema\\visuals\\random_1_002816.png"
+  },
+  "evaluation_seconds": 1549.0382936999995
+}

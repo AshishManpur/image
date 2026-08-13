@@ -1,0 +1,49 @@
+# ---------------------------------------------------------------- datasets
+# Data/ is 1.6 GB and individual arrays exceed GitHub's 100 MB hard file limit
+# (train_gt.npy is 400 MB, train_lr.npy 100 MB). The imagery is also grayscale-converted
+# natural photography carrying photographer watermarks, so it is not ours to publish.
+Data/
+*.npy
+
+# ------------------------------------------------------------- model weights
+# 591 MB; best.pt and latest.pt are 151 MB each, over GitHub's per-file limit.
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+
+# ------------------------------------------------------------------- outputs
+# 645 MB of rendered predictions, logs and exports; all reproducible from the code.
+outputs/
+*.log
+
+# Rendered dataset samples: derived from the watermarked source photography.
+# Remove this line and `git add -f` if you decide publishing them is fine.
+reports/figures/
+
+# -------------------------------------------------------------------- python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+
+# ------------------------------------------------------------------ archives
+*.zip
+*.tar
+*.tar.gz
+
+# --------------------------------------------------------------------- local
+.DS_Store
+__MACOSX/
+Thumbs.db
+.idea/
+.vscode/
+*.swp

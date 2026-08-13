@@ -1,0 +1,387 @@
+{
+  "shapes": [
+    {
+      "site": "Dec D1 (Part 3 stage 15)",
+      "batch": 1,
+      "skip": [
+        1,
+        96,
+        32,
+        32
+      ],
+      "decoded": [
+        1,
+        96,
+        32,
+        32
+      ],
+      "gate": [
+        1,
+        96,
+        1,
+        1
+      ],
+      "output": [
+        1,
+        96,
+        32,
+        32
+      ],
+      "shape_preserved": true
+    },
+    {
+      "site": "Dec D1 (Part 3 stage 15)",
+      "batch": 2,
+      "skip": [
+        2,
+        96,
+        32,
+        32
+      ],
+      "decoded": [
+        2,
+        96,
+        32,
+        32
+      ],
+      "gate": [
+        2,
+        96,
+        1,
+        1
+      ],
+      "output": [
+        2,
+        96,
+        32,
+        32
+      ],
+      "shape_preserved": true
+    },
+    {
+      "site": "Dec D1 (Part 3 stage 15)",
+      "batch": 8,
+      "skip": [
+        8,
+        96,
+        32,
+        32
+      ],
+      "decoded": [
+        8,
+        96,
+        32,
+        32
+      ],
+      "gate": [
+        8,
+        96,
+        1,
+        1
+      ],
+      "output": [
+        8,
+        96,
+        32,
+        32
+      ],
+      "shape_preserved": true
+    },
+    {
+      "site": "Dec D0 (Part 3 stage 20)",
+      "batch": 1,
+      "skip": [
+        1,
+        48,
+        64,
+        64
+      ],
+      "decoded": [
+        1,
+        48,
+        64,
+        64
+      ],
+      "gate": [
+        1,
+        48,
+        1,
+        1
+      ],
+      "output": [
+        1,
+        48,
+        64,
+        64
+      ],
+      "shape_preserved": true
+    },
+    {
+      "site": "Dec D0 (Part 3 stage 20)",
+      "batch": 2,
+      "skip": [
+        2,
+        48,
+        64,
+        64
+      ],
+      "decoded": [
+        2,
+        48,
+        64,
+        64
+      ],
+      "gate": [
+        2,
+        48,
+        1,
+        1
+      ],
+      "output": [
+        2,
+        48,
+        64,
+        64
+      ],
+      "shape_preserved": true
+    },
+    {
+      "site": "Dec D0 (Part 3 stage 20)",
+      "batch": 8,
+      "skip": [
+        8,
+        48,
+        64,
+        64
+      ],
+      "decoded": [
+        8,
+        48,
+        64,
+        64
+      ],
+      "gate": [
+        8,
+        48,
+        1,
+        1
+      ],
+      "output": [
+        8,
+        48,
+        64,
+        64
+      ],
+      "shape_preserved": true
+    }
+  ],
+  "parameters": [
+    {
+      "site": "Dec D1 (Part 3 stage 15)",
+      "channels": 96,
+      "measured": 23256,
+      "analytic": 23256,
+      "contract": 23256,
+      "exact_match": true,
+      "concat": 18528,
+      "breakdown": {
+        "project": 18528,
+        "squeeze": 2328,
+        "excite": 2400
+      }
+    },
+    {
+      "site": "Dec D0 (Part 3 stage 20)",
+      "channels": 48,
+      "measured": 5868,
+      "analytic": 5868,
+      "contract": 5868,
+      "exact_match": true,
+      "concat": 4656,
+      "breakdown": {
+        "project": 4656,
+        "squeeze": 588,
+        "excite": 624
+      }
+    }
+  ],
+  "module_flops": [
+    {
+      "site": "Dec D1 (Part 3 stage 15)",
+      "gated_macs": 18878976,
+      "gated_flops": 37757952,
+      "concat_macs": 18874368,
+      "concat_flops": 37748736,
+      "delta_macs": 4608,
+      "contract_macs": 18878976
+    },
+    {
+      "site": "Dec D0 (Part 3 stage 20)",
+      "gated_macs": 18875520,
+      "gated_flops": 37751040,
+      "concat_macs": 18874368,
+      "concat_flops": 37748736,
+      "delta_macs": 1152,
+      "contract_macs": 18875520
+    }
+  ],
+  "model_complexity": {
+    "gated": {
+      "parameters": 1737562,
+      "macs": 1819042496,
+      "flops": 3638084992,
+      "disk_mb_fp32": 6.628273010253906
+    },
+    "concat": {
+      "parameters": 1731622,
+      "macs": 1819036736,
+      "flops": 3638073472,
+      "disk_mb_fp32": 6.605613708496094
+    },
+    "delta_parameters": 5940,
+    "delta_macs": 5760,
+    "mac_overhead_fraction": 3.1665110912856244e-06
+  },
+  "activation_memory": [
+    {
+      "site": "Dec D1 (Part 3 stage 15)",
+      "fusion": "gated",
+      "elements": 295224,
+      "elements_per_cHW": 3.003173828125,
+      "fp16_mb": 0.590448,
+      "contract_mb": 0.59,
+      "deviation": 0.0007593220338983118
+    },
+    {
+      "site": "Dec D1 (Part 3 stage 15)",
+      "fusion": "concat",
+      "elements": 294912,
+      "elements_per_cHW": 3.0,
+      "fp16_mb": 0.589824
+    },
+    {
+      "site": "Dec D0 (Part 3 stage 20)",
+      "fusion": "gated",
+      "elements": 589980,
+      "elements_per_cHW": 3.00079345703125,
+      "fp16_mb": 1.17996,
+      "contract_mb": 1.18,
+      "deviation": -3.3898305084779664e-05
+    },
+    {
+      "site": "Dec D0 (Part 3 stage 20)",
+      "fusion": "concat",
+      "elements": 589824,
+      "elements_per_cHW": 3.0,
+      "fp16_mb": 1.179648
+    }
+  ],
+  "gradients": {
+    "parameters": {
+      "project.weight": {
+        "finite": true,
+        "nonzero": 18432,
+        "numel": 18432
+      },
+      "project.bias": {
+        "finite": true,
+        "nonzero": 96,
+        "numel": 96
+      },
+      "squeeze.weight": {
+        "finite": true,
+        "nonzero": 2304,
+        "numel": 2304
+      },
+      "squeeze.bias": {
+        "finite": true,
+        "nonzero": 24,
+        "numel": 24
+      },
+      "excite.weight": {
+        "finite": true,
+        "nonzero": 2304,
+        "numel": 2304
+      },
+      "excite.bias": {
+        "finite": true,
+        "nonzero": 96,
+        "numel": 96
+      }
+    },
+    "all_reached": true,
+    "skip_grad_nonzero": 196608,
+    "decoded_grad_nonzero": 196608
+  },
+  "stability": {
+    "finite": true,
+    "batches": 100,
+    "gate_min": 8.234313144426932e-24,
+    "gate_max": 1.0,
+    "gate_in_unit_interval": true,
+    "worst_convexity_violation": 0.000244140625
+  },
+  "readiness": {
+    "autocast_bf16": {
+      "finite": true,
+      "max_abs_diff": 0.002850651741027832
+    },
+    "channels_last": {
+      "max_abs_diff": 1.1920928955078125e-07
+    },
+    "torchscript": {
+      "max_abs_diff": 0.0
+    },
+    "torch_compile": {
+      "backend": "eager",
+      "fullgraph": true,
+      "max_abs_diff": 0.0
+    },
+    "onnx": {
+      "requested_17": {
+        "produced_opset": 18,
+        "max_abs_diff": 1.1920928955078125e-07
+      },
+      "requested_18": {
+        "produced_opset": 18,
+        "max_abs_diff": 1.1920928955078125e-07
+      }
+    },
+    "cuda": "SKIPPED (no CUDA device)"
+  },
+  "factory": {
+    "build_fusion_gated": "GatedFuse",
+    "build_fusion_concat": "ConcatFusion",
+    "reduction": 4,
+    "decoder_fusion_types": [
+      "GatedFuse",
+      "GatedFuse"
+    ],
+    "decoder_fusion_channels": [
+      96,
+      48
+    ],
+    "decoder_fusion_parameters": [
+      23256,
+      5868
+    ]
+  },
+  "latency": {
+    "repeats": 40,
+    "interleaved": true,
+    "gated": {
+      "median_ms": 218.011699966155,
+      "min_ms": 114.8473999928683,
+      "p10_ms": 127.18069995753467,
+      "p90_ms": 243.40759997721761
+    },
+    "concat": {
+      "median_ms": 215.72900004684925,
+      "min_ms": 117.36260005272925,
+      "p10_ms": 122.13200004771352,
+      "p90_ms": 242.2734999563545
+    },
+    "median_overhead_fraction": 0.0105813308308573,
+    "min_overhead_fraction": -0.02143101855898645
+  }
+}

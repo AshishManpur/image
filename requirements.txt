@@ -1,0 +1,26 @@
+# Core numerical stack
+numpy>=1.23
+
+# PyTorch 2.x: AMP, SDPA, FlopCounterMode, ONNX export
+torch>=2.4
+
+# Dataset analysis
+scipy>=1.10
+
+# Visualisation and sample grids
+matplotlib>=3.7
+
+# Training telemetry
+tensorboard>=2.16
+tqdm>=4.65
+
+# Testing (Contract Part 9)
+pytest>=8.0
+
+# Export verification (Contract Part 15, steps 22-23)
+onnx>=1.16
+onnxruntime>=1.18
+onnxscript>=0.1  # required by the torch 2.6+ ONNX exporter
+
+# Perceptual metric, evaluation only (Contract Part 6)
+lpips>=0.1.4

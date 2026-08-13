@@ -1,0 +1,139 @@
+{
+  "schema": "attention_vs_pre_attention/v1",
+  "generated_utc": "2026-08-11T17:28:11Z",
+  "environment": {
+    "python": "3.10.9",
+    "torch": "2.10.0+cpu",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "device": "cpu",
+    "amp_dtype": "fp32",
+    "cuda_available": false
+  },
+  "configuration": {
+    "split": "val",
+    "n_images": 320,
+    "limit": 0,
+    "packed_root": "C:\\Users\\Ashish Kumar\\Desktop\\Image restoration\\data\\packed",
+    "weight_source": "ema",
+    "seed": 1337,
+    "index_range": [
+      0,
+      2911
+    ]
+  },
+  "models": {
+    "pre": {
+      "checkpoint": "checkpoints\\pre_attention_baseline_50ep\\best_ema_psnr.pt",
+      "parameters": 1737562,
+      "epoch": 29,
+      "use_attention": false,
+      "variant": "sparc-base (pre-attention, weights=ema)"
+    },
+    "attn": {
+      "checkpoint": "checkpoints\\sparc_base_50\\best_ema_psnr.pt",
+      "parameters": 2345650,
+      "epoch": 29,
+      "use_attention": true,
+      "variant": "sparc-base (attention, weights=ema)"
+    },
+    "parameter_overhead_pct": 34.996621703283104
+  },
+  "summary": {
+    "psnr_pre": {
+      "mean": 27.457764826155188,
+      "median": 27.500139979962732,
+      "std": 4.099561207295385,
+      "min": 11.179061305750754,
+      "max": 39.55105230843863
+    },
+    "psnr_attn": {
+      "mean": 27.439569202876402,
+      "median": 27.520656835728776,
+      "std": 4.105324908086242,
+      "min": 11.115938931594263,
+      "max": 39.69415694186233
+    },
+    "ssim_pre": {
+      "mean": 0.7517669718712569,
+      "median": 0.7973774075508118,
+      "std": 0.1557944686411537,
+      "min": 0.2055920660495758,
+      "max": 0.9826576113700867
+    },
+    "ssim_attn": {
+      "mean": 0.750259350053966,
+      "median": 0.7985469400882721,
+      "std": 0.15717572750114037,
+      "min": 0.20044489204883575,
+      "max": 0.983180820941925
+    }
+  },
+  "paired_statistics": {
+    "psnr_delta": {
+      "n": 320,
+      "mean": -0.018195623278788802,
+      "median": -0.013211121267904247,
+      "std": 0.09972387319975118,
+      "ci95_low": -0.029163513172972454,
+      "ci95_high": -0.00722773338460515,
+      "t_statistic": -3.2639446695258036,
+      "t_pvalue": 0.0012179317082273728,
+      "wilcoxon_statistic": 19652.0,
+      "wilcoxon_pvalue": 0.0002733402559046,
+      "cohens_dz": -0.18246005389644454,
+      "n_improved": 131,
+      "n_degraded": 189,
+      "n_tied": 0,
+      "pct_improved": 40.9375,
+      "pct_degraded": 59.0625,
+      "largest_improvement": 0.45363991183001673,
+      "largest_degradation": -0.44419520853447025
+    },
+    "ssim_delta": {
+      "n": 320,
+      "mean": -0.001507621817290783,
+      "median": -0.0004131197929382324,
+      "std": 0.009642785222928467,
+      "ci95_low": -0.0025681603142913637,
+      "ci95_high": -0.0004470833202902026,
+      "t_statistic": -2.796822527838204,
+      "t_pvalue": 0.005474042755925278,
+      "wilcoxon_statistic": 21187.0,
+      "wilcoxon_pvalue": 0.006675792259922335,
+      "cohens_dz": -0.15634713233122552,
+      "n_improved": 138,
+      "n_degraded": 180,
+      "n_tied": 2,
+      "pct_improved": 43.125,
+      "pct_degraded": 56.25,
+      "largest_improvement": 0.04561334848403931,
+      "largest_degradation": -0.07336445152759552
+    }
+  },
+  "latency": {
+    "pre": {
+      "mean_ms": 155.20383499988384,
+      "median_ms": 157.83539999938512,
+      "std_ms": 11.264209229181905,
+      "repeats": 20
+    },
+    "attn": {
+      "mean_ms": 229.40341499997885,
+      "median_ms": 229.90980000031414,
+      "std_ms": 7.509748014992845,
+      "repeats": 20
+    },
+    "overhead_pct": 45.664280637429755
+  },
+  "visuals": {
+    "largest_improvement": "outputs\\attention_vs_pre_attention\\val_320_ema\\visuals\\largest_improvement_001612.png",
+    "largest_degradation": "outputs\\attention_vs_pre_attention\\val_320_ema\\visuals\\largest_degradation_001299.png",
+    "median_case": "outputs\\attention_vs_pre_attention\\val_320_ema\\visuals\\median_case_000009.png",
+    "worst_absolute_psnr": "outputs\\attention_vs_pre_attention\\val_320_ema\\visuals\\worst_absolute_psnr_000984.png",
+    "random_0": "outputs\\attention_vs_pre_attention\\val_320_ema\\visuals\\random_0_002583.png",
+    "random_1": "outputs\\attention_vs_pre_attention\\val_320_ema\\visuals\\random_1_001614.png",
+    "random_2": "outputs\\attention_vs_pre_attention\\val_320_ema\\visuals\\random_2_000347.png",
+    "random_3": "outputs\\attention_vs_pre_attention\\val_320_ema\\visuals\\random_3_002249.png"
+  },
+  "evaluation_seconds": 120.55034179999711
+}

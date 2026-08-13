@@ -1,0 +1,350 @@
+{
+ "tree": [
+  {
+   "dir": ".",
+   "n_files": 0,
+   "bytes": 0,
+   "exts": {},
+   "subdirs": [
+    "Test_NoisyLR (1)",
+    "train"
+   ]
+  },
+  {
+   "dir": "Test_NoisyLR (1)",
+   "n_files": 0,
+   "bytes": 0,
+   "exts": {},
+   "subdirs": [
+    "NoisyLR",
+    "__MACOSX"
+   ]
+  },
+  {
+   "dir": "Test_NoisyLR (1)\\NoisyLR",
+   "n_files": 400,
+   "bytes": 26265600,
+   "exts": {
+    ".npy": 400
+   },
+   "subdirs": []
+  },
+  {
+   "dir": "Test_NoisyLR (1)\\__MACOSX",
+   "n_files": 1,
+   "bytes": 163,
+   "exts": {
+    "<noext>": 1
+   },
+   "subdirs": [
+    "NoisyLR"
+   ]
+  },
+  {
+   "dir": "Test_NoisyLR (1)\\__MACOSX\\NoisyLR",
+   "n_files": 400,
+   "bytes": 65200,
+   "exts": {
+    ".npy": 400
+   },
+   "subdirs": []
+  },
+  {
+   "dir": "train",
+   "n_files": 0,
+   "bytes": 0,
+   "exts": {},
+   "subdirs": [
+    "__MACOSX",
+    "train"
+   ]
+  },
+  {
+   "dir": "train\\__MACOSX",
+   "n_files": 1,
+   "bytes": 163,
+   "exts": {
+    "<noext>": 1
+   },
+   "subdirs": [
+    "train"
+   ]
+  },
+  {
+   "dir": "train\\__MACOSX\\train",
+   "n_files": 3,
+   "bytes": 446,
+   "exts": {
+    ".ds_store": 1,
+    "<noext>": 2
+   },
+   "subdirs": [
+    "GT",
+    "NoisyLR"
+   ]
+  },
+  {
+   "dir": "train\\__MACOSX\\train\\GT",
+   "n_files": 3200,
+   "bytes": 521600,
+   "exts": {
+    ".npy": 3200
+   },
+   "subdirs": []
+  },
+  {
+   "dir": "train\\__MACOSX\\train\\NoisyLR",
+   "n_files": 3200,
+   "bytes": 521600,
+   "exts": {
+    ".npy": 3200
+   },
+   "subdirs": []
+  },
+  {
+   "dir": "train\\train",
+   "n_files": 1,
+   "bytes": 10244,
+   "exts": {
+    "<noext>": 1
+   },
+   "subdirs": [
+    "GT",
+    "NoisyLR"
+   ]
+  },
+  {
+   "dir": "train\\train\\GT",
+   "n_files": 3200,
+   "bytes": 839270400,
+   "exts": {
+    ".npy": 3200
+   },
+   "subdirs": []
+  },
+  {
+   "dir": "train\\train\\NoisyLR",
+   "n_files": 3200,
+   "bytes": 210124800,
+   "exts": {
+    ".npy": 3200
+   },
+   "subdirs": []
+  }
+ ],
+ "ext_counter": {
+  ".npy": 13600,
+  "<noext>": 5,
+  ".ds_store": 1
+ },
+ "total_bytes": 1076780216,
+ "naming": {
+  "train_lr": [
+   "000000.npy",
+   "000001.npy",
+   "000002.npy",
+   "000003.npy",
+   "000004.npy",
+   "000005.npy",
+   "...",
+   "003198.npy",
+   "003199.npy"
+  ],
+  "train_gt": [
+   "000000.npy",
+   "000001.npy",
+   "000002.npy",
+   "000003.npy",
+   "000004.npy",
+   "000005.npy",
+   "...",
+   "003198.npy",
+   "003199.npy"
+  ],
+  "test_lr": [
+   "000000.npy",
+   "000001.npy",
+   "000002.npy",
+   "000003.npy",
+   "000004.npy",
+   "000005.npy",
+   "...",
+   "000398.npy",
+   "000399.npy"
+  ],
+  "macosx_train_lr": [
+   "._000000.npy",
+   "._000001.npy",
+   "._000002.npy",
+   "._000003.npy",
+   "._000004.npy",
+   "._000005.npy",
+   "...",
+   "._003198.npy",
+   "._003199.npy"
+  ],
+  "macosx_test_lr": [
+   "._000000.npy",
+   "._000001.npy",
+   "._000002.npy",
+   "._000003.npy",
+   "._000004.npy",
+   "._000005.npy",
+   "...",
+   "._000398.npy",
+   "._000399.npy"
+  ]
+ },
+ "unreadable": {
+  "train_lr": [],
+  "train_gt": [],
+  "test_lr": []
+ },
+ "macosx_probe": [
+  {
+   "name": "._000000.npy",
+   "size": 163,
+   "head_hex": "00051607000200004d6163204f532058"
+  },
+  {
+   "name": "._000001.npy",
+   "size": 163,
+   "head_hex": "00051607000200004d6163204f532058"
+  },
+  {
+   "name": "._000002.npy",
+   "size": 163,
+   "head_hex": "00051607000200004d6163204f532058"
+  }
+ ],
+ "stats": {
+  "train_lr": {
+   "n_files": 3200,
+   "n_ok": 3200,
+   "shapes": {
+    "(128, 128)": 3200
+   },
+   "dtypes": {
+    "float32": 3200
+   },
+   "min_of_min": -0.2785630524158478,
+   "max_of_max": 2.1580049991607666,
+   "mean_of_mean": 0.4335362882139575,
+   "std_of_mean": 0.18609596151881494,
+   "mean_of_std": 0.20579525967312115,
+   "global_min_p1": -0.028316852673888202,
+   "global_max_p99": 1.4273437249660492,
+   "n_nan": 0,
+   "n_inf": 0,
+   "n_unique_hashes": 3200,
+   "per_image_min_range": [
+    -0.2785630524158478,
+    0.40387994050979614
+   ],
+   "per_image_max_range": [
+    0.6577156782150269,
+    2.1580049991607666
+   ],
+   "per_image_mean_range": [
+    0.0157044156574304,
+    0.9591020184255399
+   ],
+   "per_image_std_range": [
+    0.01641434630964027,
+    0.45119959510501007
+   ],
+   "duplicate_groups": {}
+  },
+  "train_gt": {
+   "n_files": 3200,
+   "n_ok": 3200,
+   "shapes": {
+    "(256, 256)": 3200
+   },
+   "dtypes": {
+    "float32": 3200
+   },
+   "min_of_min": 0.0,
+   "max_of_max": 1.0,
+   "mean_of_mean": 0.43352844136125407,
+   "std_of_mean": 0.18624597123221315,
+   "mean_of_std": 0.18762914256788446,
+   "global_min_p1": 6.17051737208385e-05,
+   "global_max_p99": 0.9999451398849487,
+   "n_nan": 0,
+   "n_inf": 0,
+   "n_unique_hashes": 3200,
+   "per_image_min_range": [
+    0.0,
+    0.0
+   ],
+   "per_image_max_range": [
+    1.0,
+    1.0
+   ],
+   "per_image_mean_range": [
+    0.015612811547855543,
+    0.9588308818763949
+   ],
+   "per_image_std_range": [
+    0.01452361827957442,
+    0.4395612113324707
+   ],
+   "duplicate_groups": {}
+  },
+  "test_lr": {
+   "n_files": 400,
+   "n_ok": 400,
+   "shapes": {
+    "(128, 128)": 400
+   },
+   "dtypes": {
+    "float32": 400
+   },
+   "min_of_min": -0.2248806655406952,
+   "max_of_max": 2.1580159664154053,
+   "mean_of_mean": 0.4427420280281315,
+   "std_of_mean": 0.16585474097738934,
+   "mean_of_std": 0.22026882042158172,
+   "global_min_p1": -0.06931002475321293,
+   "global_max_p99": 1.373725632429123,
+   "n_nan": 0,
+   "n_inf": 0,
+   "n_unique_hashes": 400,
+   "per_image_min_range": [
+    -0.2248806655406952,
+    0.12650372087955475
+   ],
+   "per_image_max_range": [
+    0.7741618752479553,
+    2.1580159664154053
+   ],
+   "per_image_mean_range": [
+    0.033245383982657584,
+    0.9047156761274664
+   ],
+   "per_image_std_range": [
+    0.03383600192702915,
+    0.4217442056800754
+   ],
+   "duplicate_groups": {}
+  }
+ },
+ "pairing": {
+  "n_lr": 3200,
+  "n_gt": 3200,
+  "matched": 3200,
+  "lr_without_gt": [],
+  "gt_without_lr": [],
+  "n_lr_without_gt": 0,
+  "n_gt_without_lr": 0,
+  "stem_pattern_ok": true,
+  "stem_min": "000000",
+  "stem_max": "003199",
+  "contiguous_ids": true,
+  "train_test_hash_overlap": 0,
+  "shape_pairs": {
+   "((128, 128), (256, 256))": 3200
+  }
+ }
+}
