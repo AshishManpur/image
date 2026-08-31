@@ -40,6 +40,7 @@ from __future__ import annotations
 
 import torch
 from torch import nn
+from torch.utils.checkpoint import checkpoint
 
 from configs.sparc_config import SparcConfig
 from models.blocks.naf_block import NAFBlock
@@ -81,6 +82,7 @@ class CleanLRBranch(nn.Module):
                 for _ in range(config.clean_branch_naf_blocks)
             ]
         )
+        self.use_checkpoint = config.clean_branch_checkpoint
         self.to_clean = nn.Conv2d(width, config.out_channels, kernel_size=3, padding=1)
         if config.clean_branch_zero_init:
             nn.init.zeros_(self.to_clean.weight)
@@ -107,7 +109,12 @@ class CleanLRBranch(nn.Module):
                 "CleanLRBranch configured for " + str(self.in_channels)
                 + " channels, got " + str(x.shape[1]) + "."
             )
-        return self.to_clean(self.blocks(self.idwt(self.project(x))))
+        x = self.idwt(self.project(x))
+        if self.use_checkpoint and self.training and torch.is_grad_enabled():
+            x = checkpoint(self.blocks, x, use_reentrant=False)
+        else:
+            x = self.blocks(x)
+        return self.to_clean(x)
 
     def extra_repr(self) -> str:
         return (

@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import torch
 from torch import nn
+from torch.utils.checkpoint import checkpoint
 
 from configs.sparc_config import SparcConfig
 from models.blocks.naf_block import NAFBlock
@@ -65,6 +66,20 @@ class ReconstructionHead(nn.Module):
             width, 4 * config.out_channels, kernel_size=3, padding=1
         )
         self.idwt_out = HaarIDWT()
+        self.use_checkpoint = config.head_checkpoint
+
+    def _run_blocks(self, x: torch.Tensor) -> torch.Tensor:
+        """Apply the NAF stack, optionally gradient-checkpointed.
+
+        Checkpointing is applied only when training with grad enabled: under
+        ``torch.no_grad`` there is no graph to trade against, so recomputation would be
+        pure waste. ``use_reentrant=False`` is required — the reentrant implementation
+        does not propagate correctly when the checkpointed region's inputs do not require
+        grad, which is exactly the case at the head's input during early training.
+        """
+        if self.use_checkpoint and self.training and torch.is_grad_enabled():
+            return checkpoint(self.blocks, x, use_reentrant=False)
+        return self.blocks(x)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         """Reconstruct the full-resolution image.
@@ -84,7 +99,7 @@ class ReconstructionHead(nn.Module):
                 + " channels, got " + str(x.shape[1]) + "."
             )
         x = self.idwt_mid(self.project(x))
-        x = self.blocks(x)
+        x = self._run_blocks(x)
         return self.idwt_out(self.to_subbands(x))
 
     def predict_subbands(self, x: torch.Tensor) -> torch.Tensor:
@@ -98,7 +113,7 @@ class ReconstructionHead(nn.Module):
         Returns:
             Tensor of shape ``(B, 4 * out_channels, 2T, 2T)``.
         """
-        return self.to_subbands(self.blocks(self.idwt_mid(self.project(x))))
+        return self.to_subbands(self._run_blocks(self.idwt_mid(self.project(x))))
 
     def extra_repr(self) -> str:
         return (

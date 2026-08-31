@@ -130,6 +130,28 @@ class SparcConfig:
     clean_branch_zero_init: bool = True
     """Zero-initialise the branch's output convolution. This is what makes the modified
     network start from the existing trained behaviour instead of a random residual."""
+    head_checkpoint: bool = False
+    """Gradient-checkpoint the reconstruction head's NAF blocks.
+
+    Measured at batch 8, bf16: ``head @128`` holds 252.7 MB of activation (27.0 % of the
+    model's total) for 25,828 parameters (1.1 %). It is the single worst
+    activation-per-parameter stage in the network, purely because it is the only NAF
+    stack running at 128x128. Checkpointing it stores block boundaries instead of every
+    intermediate, which buys the width needed at the resolution where the mid- and
+    high-frequency bands — 85 % of the recoverable error — are actually reconstructed.
+
+    Costs one extra forward of those blocks during backward. ``head.blocks`` is 660 MFLOP
+    of the 5,714 MFLOP model, so the expected wall-clock penalty is roughly 10 %.
+
+    Applied only while training with grad enabled; inference is unaffected. Defaults to
+    ``False`` so every existing variant is untouched.
+    """
+    clean_branch_checkpoint: bool = False
+    """Gradient-checkpoint the clean-LR branch's NAF blocks. Same rationale as
+    ``head_checkpoint`` — ``clean @128`` holds 168.0 MB (18.0 %) for 16,737 parameters
+    (0.7 %). Left ``False`` in ``sparc-clean-lr-v2``: the branch is narrower than the
+    head and the memory it holds is affordable, so the recompute cost is not yet worth
+    paying. Enable it if the VRAM measurement comes in over budget."""
     residual_source: str = "noisy"
     """Which tensor feeds the global residual: ``"noisy"`` (V1, ``y_hat``) or ``"clean"``
     (``y_hat + Delta``). ``"noisy"`` is retained as an exact compatibility mode and is
@@ -533,6 +555,52 @@ def sparc_clean_lr() -> SparcConfig:
     )
 
 
+def sparc_clean_lr_v2() -> SparcConfig:
+    """Capacity moved to where the error is, paid for by checkpointing (Phase 7).
+
+    Profiling ``sparc-clean-lr`` at batch 8 showed the capacity allocation is inverted
+    relative to the measured error:
+
+    ==============  ========  ======  =========  ======
+    stage            params    p%      act MB     a%
+    ==============  ========  ======  =========  ======
+    enc L2 @16      1220255   50.5 %      48.5    5.2 %
+    head @128         25828    1.1 %     252.7   27.0 %
+    ==============  ========  ======  =========  ======
+
+    Half the parameters sit at 16x16 while the entire 256x256 output is produced by a
+    stage holding 1.1 % of them — and the mid and high bands, which carry 85 % of the
+    recoverable error against the denoise-only oracle, are reconstructed at 64x64 and
+    128x128. The Nyquist band is already at the oracle (ratio 1.00x), so capacity spent
+    there cannot pay.
+
+    This variant widens the 64x64 trunk (48 -> 64) and the reconstruction head
+    (32 -> 64, 3 -> 4 blocks), and funds the head's activation cost with
+    ``head_checkpoint``. L2 grows 160 -> 192 only because parameters are nearly free at
+    16x16; it is not where the gain is expected.
+
+    **Not checkpoint-compatible with the V1 lineage**: the trunk widths change, so this
+    cannot warm-start from ``sparc_base_50``. It trains from scratch.
+    """
+    return SparcConfig(
+        name="sparc-clean-lr-v2",
+        widths=(64, 128, 192),
+        enc_naf_blocks=(4, 4, 4),
+        enc_gsa_blocks=(0, 0, 0),
+        dec_naf_blocks=(4, 4),
+        dec_gsa_blocks=(0, 0),
+        num_heads=(0, 4, 6),  # inert while GSA is off; satisfies head_dim 16
+        head_width=64,
+        head_naf_blocks=4,
+        head_checkpoint=True,
+        use_clean_lr_branch=True,
+        clean_branch_width=48,
+        clean_branch_naf_blocks=2,
+        clean_branch_zero_init=True,
+        residual_source="clean",
+    )
+
+
 def sparc_fine() -> SparcConfig:
     """Capacity reallocated coarse-to-fine, at slightly *lower* parameter count.
 
@@ -740,6 +808,7 @@ SPARC_VARIANTS = {
     "sparc-tiny": sparc_tiny,
     "sparc-base": sparc_base,
     "sparc-clean-lr": sparc_clean_lr,
+    "sparc-clean-lr-v2": sparc_clean_lr_v2,
     "sparc-fine": sparc_fine,
     "sparc-xl": sparc_xl,
     "sparc-xl-moderate": sparc_xl_moderate,

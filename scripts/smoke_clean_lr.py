@@ -34,6 +34,7 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from configs.sparc_config import (  # noqa: E402
+    SPARC_VARIANTS,
     DataConfig,
     LossConfig,
     TrainingConfig,
@@ -68,6 +69,14 @@ def main() -> None:
     parser.add_argument("--train-batches", type=int, default=12)
     parser.add_argument("--val-batches", type=int, default=8)
     parser.add_argument("--batch-size", type=int, default=8)
+    parser.add_argument(
+        "--variant", default="sparc-clean-lr",
+        help="Registered variant to smoke-test, e.g. sparc-clean-lr-v2.",
+    )
+    parser.add_argument(
+        "--amp-dtype", default="bf16", choices=("fp32", "bf16", "fp16"),
+        help="Training precision; the CUDA runs use bf16.",
+    )
     args = parser.parse_args()
     device = torch.device(args.device)
     torch.manual_seed(0)
@@ -78,7 +87,12 @@ def main() -> None:
 
     # ------------------------------------------------------------ 1. construction
     base_cfg = sparc_base()
-    clean_cfg = sparc_clean_lr()
+    clean_cfg = SPARC_VARIANTS[args.variant]()
+    # The V1 lineage shares the trunk widths of sparc-base, so its checkpoint loads and
+    # the zero-init equivalence is meaningful. sparc-clean-lr-v2 changes `widths`, so it
+    # is deliberately checkpoint-incompatible and trains from scratch; the equivalence
+    # assertions do not apply and are reported as SKIP rather than silently "passing".
+    warm_start = clean_cfg.widths == base_cfg.widths
     old = SPARCNet(base_cfg).eval()
     new = SPARCNet(clean_cfg).eval()
     p_old = sum(p.numel() for p in old.parameters())
@@ -88,35 +102,77 @@ def main() -> None:
     # ------------------------------------------------------- 5. partial load first
     # Done before the equivalence checks because they must compare *trained* weights,
     # not two random initialisations.
-    if not CHECKPOINT.exists():
-        raise SystemExit(f"Checkpoint not found: {CHECKPOINT}")
-    payload = torch.load(CHECKPOINT, map_location="cpu", weights_only=False)
-    old.load_state_dict(payload["model"])
-    missing, unexpected = load_backbone_weights(new, CHECKPOINT)
+    # A variant that trains from scratch (different trunk widths) has no use for the V1
+    # checkpoint, so it must not be a hard requirement — otherwise the smoke test cannot
+    # run on a fresh GPU machine that has the code but not the checkpoints.
+    if warm_start and not CHECKPOINT.exists():
+        raise SystemExit(
+            f"Checkpoint not found: {CHECKPOINT}\n"
+            f"{args.variant} shares sparc-base's trunk widths, so the warm-start and "
+            "equivalence checks require it."
+        )
+    if CHECKPOINT.exists():
+        payload = torch.load(CHECKPOINT, map_location="cpu", weights_only=False)
+        old.load_state_dict(payload["model"])
+    elif not warm_start:
+        print(f"[note] {CHECKPOINT.name} absent; skipping V1-lineage comparisons "
+              f"({args.variant} trains from scratch anyway).")
+    if warm_start:
+        missing, unexpected = load_backbone_weights(new, CHECKPOINT)
+        _check(
+            "5. partial checkpoint load",
+            not unexpected and all(k.startswith("clean_branch.") for k in missing),
+            f"missing={len(missing)} (all clean_branch.*), unexpected={len(unexpected)}",
+        )
+    else:
+        missing, unexpected = [], []
+        print(f"[SKIP] 5. partial checkpoint load  widths {clean_cfg.widths} != "
+              f"{base_cfg.widths}; {args.variant} trains from scratch by design")
+        _results["5. partial checkpoint load"] = "SKIP  incompatible topology"
+
     _check(
-        "5. partial checkpoint load",
-        not unexpected and all(k.startswith("clean_branch.") for k in missing),
-        f"missing={len(missing)} (all clean_branch.*), unexpected={len(unexpected)}",
+        "0. residual_source is 'clean'",
+        clean_cfg.residual_source == "clean" and clean_cfg.use_clean_lr_branch,
+        f"residual_source={clean_cfg.residual_source!r}, branch={clean_cfg.use_clean_lr_branch}",
     )
 
     # --------------------------------------------------------- A/B. equivalences
     x = torch.randn(2, 1, 128, 128)
-    with torch.no_grad():
-        out_old = old(x)
-        out_new = new(x)
-    delta = (out_old - out_new).abs().max().item()
-    _check("A. zero-init equivalence", delta == 0.0, f"max|new-old| = {delta:.3e}")
+    if warm_start:
+        with torch.no_grad():
+            out_old = old(x)
+            out_new = new(x)
+        delta = (out_old - out_new).abs().max().item()
+        _check("A. zero-init equivalence", delta == 0.0, f"max|new-old| = {delta:.3e}")
 
-    noisy_cfg = sparc_clean_lr().with_overrides(residual_source="noisy")
-    noisy = SPARCNet(noisy_cfg).eval()
-    load_backbone_weights(noisy, CHECKPOINT)
-    with torch.no_grad():
-        out_noisy = noisy(x)
-    delta_b = (out_old - out_noisy).abs().max().item()
-    _check(
-        "B. residual_source='noisy' equivalence", delta_b == 0.0,
-        f"max|noisy-old| = {delta_b:.3e}",
-    )
+        noisy_cfg = clean_cfg.with_overrides(residual_source="noisy")
+        noisy = SPARCNet(noisy_cfg).eval()
+        load_backbone_weights(noisy, CHECKPOINT)
+        with torch.no_grad():
+            out_noisy = noisy(x)
+        delta_b = (out_old - out_noisy).abs().max().item()
+        _check(
+            "B. residual_source='noisy' equivalence", delta_b == 0.0,
+            f"max|noisy-old| = {delta_b:.3e}",
+        )
+    else:
+        for label in ("A. zero-init equivalence", "B. residual_source='noisy' equivalence"):
+            print(f"[SKIP] {label}  not applicable: topology differs from sparc-base")
+            _results[label] = "SKIP  incompatible topology"
+
+    # Checkpointing must not change the forward result. Compared in train() mode with
+    # grad enabled, which is the only mode where the checkpointed path is taken.
+    if clean_cfg.head_checkpoint or clean_cfg.clean_branch_checkpoint:
+        ref = SPARCNet(
+            clean_cfg.with_overrides(head_checkpoint=False, clean_branch_checkpoint=False)
+        )
+        ref.load_state_dict(new.state_dict())
+        new.train(); ref.train()
+        torch.manual_seed(7); a = new(x)
+        torch.manual_seed(7); b = ref(x)
+        d = (a - b).abs().max().item()
+        _check("C. checkpointing is forward-exact", d < 1e-5, f"max|ckpt-plain| = {d:.3e}")
+        new.eval()
 
     # -------------------------------------------------------------- 2/3. fwd/bwd
     new_train = new.train()
@@ -154,7 +210,7 @@ def main() -> None:
 
     # ------------------------------------------------------- 6/7. train + val epoch
     data_cfg = DataConfig()
-    train_cfg = TrainingConfig(batch_size=args.batch_size)
+    train_cfg = TrainingConfig(batch_size=args.batch_size, amp_dtype=args.amp_dtype)
     split = group_aware_split(
         data_cfg.expected_train,
         block_size=train_cfg.val_block_size,
@@ -170,7 +226,8 @@ def main() -> None:
     val_loader = DataLoader(val_sub, batch_size=args.batch_size)
 
     model = SPARCNet(clean_cfg)
-    load_backbone_weights(model, CHECKPOINT)
+    if warm_start:
+        load_backbone_weights(model, CHECKPOINT)
     trainer = Trainer(
         model=model,
         criterion=CompositeLoss(loss_cfg),
@@ -181,6 +238,7 @@ def main() -> None:
         run_name="smoke_clean_lr",          # scratch; never an existing run
     )
     if device.type == "cuda":
+        torch.cuda.empty_cache()
         torch.cuda.reset_peak_memory_stats(device)
     t0 = time.perf_counter()
     train_metrics = trainer.train_epoch()
@@ -203,11 +261,11 @@ def main() -> None:
     # ------------------------------------------------------------------- complexity
     c_old = measure_complexity(old.eval(), torch.randn(1, 1, 128, 128))
     c_new = measure_complexity(new.eval(), torch.randn(1, 1, 128, 128))
-    peak = (
-        torch.cuda.max_memory_allocated(device) / 1e9
-        if device.type == "cuda"
-        else float("nan")
-    )
+    if device.type == "cuda":
+        peak = torch.cuda.max_memory_allocated(device) / 1e9
+        peak_reserved = torch.cuda.max_memory_reserved(device) / 1e9
+    else:
+        peak = peak_reserved = float("nan")
 
     per_epoch = train_seconds * (len(train_ds) / max(1, len(train_sub)))
     print("\n" + "=" * 78)
@@ -217,7 +275,13 @@ def main() -> None:
           f"(+{100 * (p_new - p_old) / p_old:.2f}%)")
     print(f"GMAC         old={c_old.macs / 1e9:.4f}  new={c_new.macs / 1e9:.4f}  "
           f"(+{100 * (c_new.macs - c_old.macs) / c_old.macs:.1f}%)")
-    print(f"VRAM peak    {peak:.4f} GB (device={device})")
+    print(f"VRAM allocated  {peak:.4f} GB   reserved {peak_reserved:.4f} GB  (device={device})")
+    if device.type == "cuda":
+        verdict = ("EXCELLENT - proceed" if peak_reserved <= 2.8
+                   else "ACCEPTABLE - do not grow" if peak_reserved <= 3.0
+                   else "OVER BUDGET - STOP")
+        print(f"VRAM verdict    {verdict}  (hard limit 3.0 GB, judged on RESERVED)")
+    print(f"skipped batches {train_metrics.get('skipped_batches', 0.0):.0f}")
     print(f"epoch time   {train_seconds:.1f} s for {len(train_sub)} samples "
           f"-> ~{per_epoch:.0f} s extrapolated full epoch ({len(train_ds)} samples)")
     print(f"val time     {val_seconds:.1f} s for {len(val_sub)} samples")
